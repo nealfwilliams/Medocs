@@ -2,6 +2,6 @@ from django.shortcuts import render_to_response, RequestContext, HttpResponseRed
 from django.contrib import messages
 
 def home(request):
-    return render_to_response("thankyou.html",
+    return render_to_response("helloworld.html",
                               locals(),
                               context_instance=RequestContext(request))
