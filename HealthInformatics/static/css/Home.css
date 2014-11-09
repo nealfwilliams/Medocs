@@ -1,0 +1,89 @@
+﻿.left_nav{
+    font-family: Oswald;
+    position: fixed;
+    background-color: #474747;
+    width:25%;
+    height:100%;
+}
+
+#clipboard {
+    position: absolute;
+    background-color: #ede3ff;
+    top: 40%;
+    width:100%;
+    height: 60%;
+}
+
+#content {
+    position: fixed;
+    right: 0%;
+    width: 75%;
+    height: 100%;
+}
+
+#content_manager {
+    position: absolute;
+    background-color: #ffdae4;
+    height:40%;
+    width:100%;
+    border-bottom: black solid 5px;
+
+   z-index: 1;
+}
+
+#icon_column {
+    position: absolute;
+    height:100%;
+    width:100px;
+    right:0%;
+    color:white;
+}
+
+.black-background{
+    background-color: black;
+    position: fixed;
+    z-index: -1;
+    height: 100%;
+    width:100%;
+}
+
+a {
+    z-index: 1;
+    height: 20%;
+    font-family: Oswald;
+    color: white;
+    font-size: 25px;
+}
+
+.glyphicon {
+    text-align: center;
+    font-size:24px;
+    color: white;
+    display: block;
+}
+
+.cell {
+    height:30px;
+    width:30px;
+}
+
+.toggle {
+    z-index: 3;
+    position:absolute;
+    display: table;
+    vertical-align: middle;
+    left: 15%;
+    width: 5%;
+    height: 100%
+}
+
+.icon_container {
+    z-index: -1;
+    position:absolute;
+    display: table;
+    vertical-align: middle;
+    width: 15%;
+    height: 100%
+}
+
+

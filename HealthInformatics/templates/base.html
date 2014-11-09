@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+<head>
+    <meta charset="utf=8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Not For Sale Group</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="/static/css/vis.css" rel="stylesheet" type="text/css"> -->
+    <link href='/static/css/Home.css' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+</head>
+
+<body style="height: 100%;">
+<div class="left_nav">
+    <div id="icon_column">
+        <div class="glyphicon glyphicon-chevron-left" id="nav_toggle"></div>
+    </div>
+    <div class="nav_item"> <a> Patient: Marla Jones </a> </div>
+        <button class="btn btn-primary"> Change Patient</button>
+    <div class="nav_item"> <a> Profile </a> </div>
+    <div class="nav_item"> <a id="timeline_nav"> Timeline </a>
+    <div class="check_items">
+        <div id="check_item1">  </div>
+    </div>
+    </div>
+    <div class="nav-item"> <a id="table_nav" > Table </a> </div>
+    <div class="nav_item"> <a> Recent Issues </a> </div>
+
+</div>
+
+<div id="content">
+    <div id="content_manager">
+        <div id="visualization"></div>
+
+    </div>
+
+    <div id="clipboard"></div>
+</div>
+
+   {% block image %}
+   {% endblock %}
+        {% block content %}
+        {% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="/static/scripts/main.js"></script>
+    <!--<script src="/static/scripts/vis.js"></script> -->
+</body>
+</html>
