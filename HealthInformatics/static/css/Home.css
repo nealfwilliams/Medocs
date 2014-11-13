@@ -7,7 +7,7 @@
     font-family: Oswald;
     color:white;
     position: fixed;
-    background-color: #474747;
+    background-color: #282828;
     width:20%;
     height:100%;
 }
@@ -18,7 +18,8 @@
 }
 
 .absolute_hook{
-    position: static;
+    position: relative;
+
 }
 
 .nav_icon{
@@ -30,7 +31,13 @@
     color:white;
     z-index:1;
 }
-
+.nav_icon > img {
+    height:25px;
+    width:25px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
 .nav_content{
     position:relative;
     left:10px;
@@ -38,10 +45,7 @@
 }
 
 #visualization {
-  position: relative;
   width:90%;
-  top: 50%;
-  transform: translateY(-50%);
   margin-right:auto;
   margin-left: auto;
 }
@@ -54,6 +58,10 @@
     height: 55%;
 }
 
+input[type=checkbox] {
+    margin-left: 6px;
+}
+
 #content {
     position: fixed;
     right: 0%;
@@ -64,7 +72,9 @@
 
 #content_manager {
     position: absolute;
-    background-color: #ffeaf1;
+    color:black;
+    text-align: center;
+    background-color: #ffeded;
     height:45%;
     width:100%;
     border-bottom: black solid 5px;
