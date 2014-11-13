@@ -33,9 +33,6 @@ var menu_toggle = function(){
     }, 1000);
 };
 
-var create_timeline = function(){
-};
-
 /*var change_items = function(item_list){
     for (item in item_list) {
     }
@@ -63,24 +60,85 @@ $(".nav_content").click(function() {
 var container = document.getElementById('visualization');
 var options = {
   width: '100%',
-  height: '200px',
+  padding: 5,
+  height: '250px',
   margin: {
-    item: 20
+    item: 8
   }
 };
 
 var test_items = new vis.DataSet([
-    {id: 1, content: 'item 1', start: '2013-04-20'},
-    {id: 2, content: 'item 2', start: '2013-04-14'},
-    {id: 3, content: 'item 3', start: '2013-04-18'},
-    {id: 4, content: 'item 4', start: '2013-04-16', end: '2013-04-19'},
-    {id: 5, content: 'item 5', start: '2013-04-25'},
-    {id: 6, content: 'item 6', start: '2013-04-27'}
+    {id: 1, content: 'Lasix 40mg', group: 'Medications', start: '2011-04-23'},
+    {id: 2, content: 'Annual Physical Exam', group: 'Encounters', start: '2011-04-23'},
+    {id: 3, content: 'bbbbbbbbbb', group: 'Encounters', start: '2011-04-24'},
+    {id: 4, content: 'cccccccccc', group: 'Encounters', start: '2013-04-25'},
+    {id: 5, content: 'item 3', start: '2013-04-18'},
+    {id: 6, content: 'item 4', start: '2013-04-16', end: '2013-04-19'},
+    {id: 7, content: 'item 5', start: '2013-04-25'},
+    {id: 8, content: 'item 6', start: '2013-04-27'}
   ]);
 
 var timeline = new vis.Timeline(container, test_items, options);
 
+groups = [
+  {
+    id: "Medications",
+    content: 'Medications'
+    // Optional: a field 'className', 'style'
+  },
+  {
+    id: "Encounters",
+    content: 'Encounters'
+    // Optional: a field 'className', 'style'
+  },
+  {
+    id: "Conditions",
+    content: 'Conditions'
+    // Optional: a field 'className', 'style'
+  },
+  {
+    id: "Lab Results",
+    content: 'Lab Results'
+    // Optional: a field 'className', 'style'
+  },
+  {
+    id: "Social History",
+    content: 'Social History'
+    // Optional: a field 'className', 'style'
+  },
+  {
+    id: "Procedures",
+    content: 'Procedures'
+    // Optional: a field 'className', 'style'
+  }
+];
+var selected = [];
+var timeline_groups = [];
 
+var select_groups = function(){
+    for (index in selected){
+        if (selected[index]) {
+            timeline_groups.push(groups[index]);
+        }
+    }
+};
+
+$(".check_items").change(function(){
+    selected = [];
+    timeline_groups = [];
+    $(this).children('input').each(function(){
+        selected.push($(this).prop('checked'));
+    });
+    select_groups();
+    timeline.clear(groups);
+    timeline.setGroups(timeline_groups);
+});
+
+
+timeline.setGroups(timeline_groups);
+
+var create_timeline = function(){
+};
 /*$("#timeline_nav").click({
 
 })*/
