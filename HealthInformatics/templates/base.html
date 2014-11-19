@@ -21,7 +21,7 @@
     <div class="nav_item">
 
         <div class="absolute_hook">
-            <div class="nav_icon glyphicon glyphicon-chevron-left" id="nav_toggle"></div>
+            <div class="nav_icon icon_left glyphicon glyphicon-chevron-left" id="nav_toggle"></div>
         </div>
 
         <div class="nav_content">
@@ -31,7 +31,7 @@
 
     </div>
 
-    <div class="nav_item">
+    <div class="nav_item" id="profile_nav">
         <div class="absolute_hook">
             <div class="nav_icon">
                 <img src="/static/images/profile.png">
@@ -90,7 +90,7 @@
         </div>
     </div>
 
-    <div class="nav_item">
+    <div class="nav_item" id="recent_issues_nav">
 
         <div class="absolute_hook">
             <div class="nav_icon">
@@ -102,19 +102,32 @@
             <h3> Recent Issues </h3>
         </div
     </div>
-
 </div>
 
 <div id="content">
 
     <div id="content_manager">
-        <h4>  Marla's Health Timeline </h4>
-        <div id="visualization"></div>
+        <h3 id="cm_header"> </h3>
+        <div class="cm_widget" name="Timeline" id="timeline"></div>
+        <div class="cm_widget" name="Profile" id="profile">
 
+        </div>
+        <div class="cm_widget" name="Table" id="table"></div>
+        <div class="cm_widget" name="Recent Issues" id="recent_issues"></div>
     </div>
 
+<div id="clipboard_toolbar">
+        <div id="clipboard_title">My Clipboard</div>
+        <div id="clip_up_down">
+            <div id="clipboard_slider_up" class="glyphicon glyphicon-chevron-up"></div>
+            <div id="clipboard_slider_down" class="glyphicon glyphicon-chevron-down"></div>
+        </div>
+</div>
 
-<div id="clipboard"></div>
+<div id="clipboard">
+    <div id="default_text">  Use the Content Manager Above to Add Items to Your Clipboard</div>
+</div>
+
 </div>
 
    {% block image %}
