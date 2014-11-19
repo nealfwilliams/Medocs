@@ -299,8 +299,8 @@ var full_table = [
     }
 ];
 
-var drawTable = function(){
+/*var drawTable = function(){
     for ();
 
-};
+};*/
 
