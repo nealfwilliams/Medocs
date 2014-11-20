@@ -65,6 +65,8 @@
     background-color: #ffeded;
     height:50%;
     width:100%;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #clipboard_toolbar {
@@ -172,4 +174,20 @@ a {
     margin-left:auto;
     margin-right:auto;
     margin-top:20px;
+}
+
+.textbox {
+    background-color: rgba(241, 238, 235, 0.86);
+    border-radius: 5px;
+    border: black solid 3px;
+    text-align: left;
+    margin: 20px;
+}
+
+.header {
+    text-align: center;
+}
+.widget_content {
+    font-size:16px;
+    margin:20px;
 }
