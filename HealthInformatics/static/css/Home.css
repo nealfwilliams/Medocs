@@ -190,6 +190,7 @@ a {
 .clipboard_widget{
     width: 20%;
     min-height:150px;
+    display:inline-block;
 }
 .header {
     text-align: center;

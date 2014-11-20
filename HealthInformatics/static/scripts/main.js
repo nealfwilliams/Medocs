@@ -316,7 +316,10 @@ var draw_widget = function(data) {
         <h3> " + data["name"] + "</h3></div>";
     $("#default_text").hide();
     $("#clipboard").prepend(html);
+    $(".clipboard_widget").draggable({ containment: "parent", stack: ".clipboard_widget" });
+    $(".clipboard_widget").resizable();
 };
+
 /*var drawTable = function(){
     for ();
 
