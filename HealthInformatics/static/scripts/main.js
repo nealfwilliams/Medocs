@@ -299,6 +299,24 @@ var full_table = [
     }
 ];
 
+$(".clipboard_trigger").click(function(){
+    var id = $(this).attr("id");
+    var data = findData(id);
+    draw_widget(data);
+});
+
+var findData = function(id){
+    data = {"id": id, "name":"Example "+ id};
+    return data;
+};
+
+var draw_widget = function(data) {
+    var html = "<div class='textbox clipboard_widget' id= '" + data["id"] + "_widget'>" + "\
+        <div class='header'> \
+        <h3> " + data["name"] + "</h3></div>";
+    $("#default_text").hide();
+    $("#clipboard").prepend(html);
+};
 /*var drawTable = function(){
     for ();
 
