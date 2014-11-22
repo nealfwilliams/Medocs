@@ -101,9 +101,10 @@
 
         <div class="nav_content">
             <h3> Recent Issues </h3>
-        </div
+        </div>
     </div>
 </div>
+
 
 <div id="content">
 
@@ -112,99 +113,108 @@
         <div class="cm_widget" name="Timeline" id="timeline"></div>
         <div class="cm_widget" name="Profile" id="profile">
 
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="textbox" id="patient_info">
-                    <div class="header">
-                        <h3> Patient Details</h3>
+            <div class="row">
+                <div class="col-sm-5 col-sm-offset-1">
+                    <div class="textbox" id="patient_info">
+                        <div class="header">
+                            <h3> Patient Details</h3>
+                        </div>
+                        <div class="widget_content">
+                            <p> Full Name: Marla M Dixon </p>
+                            <p> Gender: F</p>
+                            <p> Date of Birth: </p>
+                            <p> 1221 Middle Street</p>
+                            <p> Atlanta, GA 30308</p>
+                        </div>
                     </div>
-                    <div class="widget_content">
-                        <p> Full Name: Marla M Dixon </p>
-                        <p> Gender: F</p>
-                        <p> Date of Birth: </p>
-                        <p> 1221 Middle Street</p>
-                        <p> Atlanta, GA 30308</p>
+                </div>
+                <div class="col-sm-3">
+                    <div class="textbox" id="author_info">
+                        <div class="header">
+                            <h3>Author Details </h3>
+                        </div>
+                        <div class="widget_content">
+                            <p> Dr. Henry Seven </p>
+                            <p> 555-555-1002 </p>
+                            <p> 1054 Atlantic Dr. </p>
+                            <p> Atlanta, GA 30318 </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="textbox" id="author_info">
+                        <div class="header">
+                            <h3>Custodian Details </h3>
+                        </div>
+                        <div class="widget_content">
+                            <p> Good Health Clinic </p>
+                            <p> 123-456-1023 </p>
+                            <p> 1234 Atlantic Dr. </p>
+                            <p> Atlanta, GA 30318 </p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <div class="textbox" id="author_info">
-                    <div class="header">
-                        <h3>Author Details </h3>
-                    </div>
-                    <div class="widget_content">
-                        <p> Dr. Henry Seven </p>
-                        <p> 555-555-1002 </p>
-                        <p> 1054 Atlantic Dr. </p>
-                        <p> Atlanta, GA 30318 </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="textbox" id="author_info">
-                    <div class="header">
-                        <h3>Custodian Details </h3>
-                    </div>
-                    <div class="widget_content">
-                        <p> Good Health Clinic </p>
-                        <p> 123-456-1023 </p>
-                        <p> 1234 Atlantic Dr. </p>
-                        <p> Atlanta, GA 30318 </p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="textbox" id="allergies">
-            <div class="header">
-                <h3>  Allergies, Adverse Reactions, and Alerts</h3>
-            </div>
-            <div class="widget_content"
-                <p> No data available </p>
-            </div>
-        </div>
-
-        <div class="textbox" id="allergies">
-
-            <div class="header">
-                <h3> Medications </h3>
+            <div id="accordion">
+            <h3>Allergies, Adverse Reactions, and Alerts</h3>
+            <div>
+                <p> No Data Available
+                </p>
             </div>
 
-            <div class="widget_content">
+            <h3>Medications</h3>
+            <div>
                 <p class="clipboard_trigger" id="lasix"> Lasix 40mg</p>
                 <p class="clipboard_trigger" id="propranolol"> Propranolol Extended Release 60 mg </p>
             </div>
-        </div>
 
-        <div class="textbox" id="allergies">
-            <div class="header">
-                <h3> Procedures </h3>
+            <h3>Procedures</h3>
+            <div>
+                <p>
+                </p>
             </div>
-            <div class="widget_content"
-                <p> No data available </p>
-            </div>
-        </div>
 
-        <div class="textbox" id="allergies">
-            <div class="header">
-                <h3> Encounters </h3>
-            </div>
-            <div class="widget_content"
-                <p> No data available </p>
+            <h3>Encounters</h3>
+            <div>
+                <p>
+                </p>
             </div>
         </div>
     </div>
-    <div class="cm_widget" name="Table" id="table"></div>
+
+    <div class="cm_widget" name="Table" id="table">
+        <table id="patient_table" style="width:80%; margin-left: auto; margin-right: auto;">
+            <tr>
+                <td>Date / Start Date</td>
+                <td>Finish Date</td>
+                <td>Medications</td>
+                <td>Problems</td>
+                <td>Encounters</td>
+                <td>Procedures</td>
+                <td>Results</td>
+                <td>Social History</td>
+            </tr>
+
+        </table>
+    </div>
+
     <div class="cm_widget" name="Recent Issues" id="recent_issues"></div>
     </div>
 
 <div id="clipboard_toolbar">
-        <div id="clipboard_title">My Clipboard</div>
+        <div id="label_block">
+
+            <div id="tab_title"> Toolbar </div>
+        </div>
+
         <div id="clip_up_down">
             <div id="clipboard_slider_up" class="glyphicon glyphicon-chevron-up"></div>
             <div id="clipboard_slider_down" class="glyphicon glyphicon-chevron-down"></div>
-
         </div>
+        <div class="indent"> indent
+        </div>
+
 </div>
 
 <div id="clipboard">

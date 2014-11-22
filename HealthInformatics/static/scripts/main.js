@@ -1,5 +1,7 @@
 var nav_icon = $("#nav_toggle");
 
+var num_tabs = 0;
+
 var test_items = new vis.DataSet([
     {id: 1, content: 'Lasix 40mg', group: 'Medications', start: '2011-04-23'},
     {id: 2, content: 'Annual Physical Exam', group: 'Encounters', start: '2011-04-23'},
@@ -210,99 +212,102 @@ var full_table = [
     {
         "date1": "01-01-1984",
         "date2": "01-01-2014",
-        "encounter": null,
-        "medication": null,
-        "problem": null,
-        "procedure": null,
-        "results": null,
+        "encounter": "",
+        "medication": "",
+        "problem": "",
+        "procedure": "",
+        "results": "",
         "social history": "Former Smoker"
     },
     {
         "date1": "04-23-11",
-        "date2": null,
+        "date2": "",
         "encounter": "Annual Physical Exam",
         "medication": "Lasix 40mg",
-        "problem": null,
-        "procedure": null,
+        "problem": "",
+        "procedure": "",
         "results": "Lab Results",
-        "social history": null
+        "social history": ""
     },
     {
         "date1": "04-23-11",
-        "date2": null,
-        "encounter": null,
+        "date2": "",
+        "encounter": "",
         "medication": "Propranolol Extended Release 60 mg",
-        "problem": null,
-        "procedure": null,
-        "results": null,
-        "social history": null
+        "problem": "",
+        "procedure": "",
+        "results": "",
+        "social history": ""
     },
     {
         "date1": "04-24-11",
-        "date2": null,
+        "date2": "",
         "encounter": "Annual Physical Exam",
-        "medication": null,
-        "problem": null,
-        "procedure": null,
-        "results": null,
-        "social history": null
+        "medication": "",
+        "problem": "",
+        "procedure": "",
+        "results": "",
+        "social history": ""
     },
     {
         "date1": "04-25-11",
-        "date2": null,
+        "date2": "",
         "encounter": "Annual Physical Exam",
-        "medication": null,
-        "problem": null,
-        "procedure": null,
-        "results": null,
-        "social history": null
+        "medication": "",
+        "problem": "",
+        "procedure": "",
+        "results": "",
+        "social history": ""
     },
     {
         "date1": "N/A",
-        "date2": null,
-        "encounter": null,
-        "medication": null,
+        "date2": "",
+        "encounter": "",
+        "medication": "",
         "problem": "Diabetes Mellitus",
-        "procedure": null,
-        "results": null,
-        "social history": null
+        "procedure": "",
+        "results": "",
+        "social history": ""
     },
     {
         "date1": "N/A",
-        "date2": null,
-        "encounter": null,
-        "medication": null,
+        "date2": "",
+        "encounter": "",
+        "medication": "",
         "problem": "Essential Hyptertension",
-        "procedure": null,
-        "results": null,
-        "social history": null
+        "procedure": "",
+        "results": "",
+        "social history": ""
     },
     {
         "date1": "N/A",
-        "date2": null,
-        "encounter": null,
-        "medication": null,
+        "date2": "",
+        "encounter": "",
+        "medication": "",
         "problem": "Simple chronic bronchitis",
-        "procedure": null,
-        "results": null,
-        "social history": null
+        "procedure": "",
+        "results": "",
+        "social history": ""
     },
     {
         "date1": "N/A",
-        "date2": null,
-        "encounter": null,
-        "medication": null,
+        "date2": "",
+        "encounter": "",
+        "medication": "",
         "problem": "Coronary artery disease",
-        "procedure": null,
-        "results": null,
-        "social history": null
+        "procedure": "",
+        "results": "",
+        "social history": ""
     }
 ];
 
 $(".clipboard_trigger").click(function(){
     var id = $(this).attr("id");
     var data = findData(id);
-    draw_widget(data);
+    var id_tag = "#" + data["id"] + "_widget";
+    if (!($(id_tag).length)) {
+        draw_widget(data);
+    }
 });
 
 var findData = function(id){
@@ -310,18 +315,62 @@ var findData = function(id){
     return data;
 };
 
+var draw_tab = function(id) {
+    var html = "<div class='tab' id='" + id + "_tab'>" +
+        "<div class='header'> Example " +
+        "<span class='glyphicon glyphicon-remove tab_remove' " + "name='" + id + "'></span></div></div>";
+    $("#clipboard_toolbar").append(html);
+    $(".tab_remove").click(function() {
+        console.log("close fired");
+        var name = $(this).attr("name");
+        remove_widget(name);
+    });
+};
+
 var draw_widget = function(data) {
-    var html = "<div class='textbox clipboard_widget' id= '" + data["id"] + "_widget'>" + "\
+    var id = data["id"];
+    var html = "<div class='textbox clipboard_widget' id= '" + id + "_widget'>" + "\
         <div class='header'> \
-        <h3> " + data["name"] + "</h3></div>";
+        <h3> " + data["name"] + "</h3></div> \
+        <div class='widget_content'></div></div>";
+    draw_tab(id);
     $("#default_text").hide();
     $("#clipboard").prepend(html);
     $(".clipboard_widget").draggable({ containment: "parent", stack: ".clipboard_widget" });
     $(".clipboard_widget").resizable();
 };
 
+var remove_widget = function(name) {
+    var widget_id = "#" + name + "_widget";
+    var tab_id = "#" + name + "_tab";
+    $(widget_id).remove();
+    $(tab_id).remove();
+};
+
+$(".tab_remove").click(function() {
+    console.log("close fired");
+    var name = $(this).attr("name");
+    remove_widget(name);
+});
+
+$("#accordion").accordion();
 /*var drawTable = function(){
     for ();
 
 };*/
-
+for (index in full_table){
+    var row = full_table[index];
+    console.log(row);
+    html = "<tr>" +
+        "<td>" + row["date1"] + "</td>" +
+        "<td>" + row["date2"] + "</td>" +
+        "<td>" + row["medication"] + "</td>" +
+        "<td>" + row["procedure"] + "</td>" +
+        "<td>" + row["encounter"] + "</td>" +
+        "<td>" + row["problem"] + "</td>" +
+        "<td>" + row["results"] + "</td>" +
+        "<td>" + row["social history"] + "</td>" +
+        "</tr>";
+    console.log(html);
+    $('#patient_table tr:last').after(html);
+};
