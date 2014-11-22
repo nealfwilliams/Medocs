@@ -301,14 +301,16 @@ var full_table = [
     }
 ];
 
-$(".clipboard_trigger").click(function(){
-    var id = $(this).attr("id");
-    var data = findData(id);
-    var id_tag = "#" + data["id"] + "_widget";
-    if (!($(id_tag).length)) {
-        draw_widget(data);
-    }
-});
+var register_trigger = function(){
+    $(".clipboard_trigger").click(function(){
+        var id = $(this).attr("id");
+        var data = findData(id);
+        var id_tag = "#" + data["id"] + "_widget";
+        if (!($(id_tag).length)) {
+            draw_widget(data);
+        }
+    });
+};
 
 var findData = function(id){
     data = {"id": id, "name":"Example "+ id};
@@ -323,6 +325,7 @@ var draw_tab = function(id) {
     $(".tab_remove").click(function() {
         console.log("close fired");
         var name = $(this).attr("name");
+        console.log(name);
         remove_widget(name);
     });
 };
@@ -358,19 +361,25 @@ $("#accordion").accordion();
     for ();
 
 };*/
+
+var space_to_underscore = function(my_string){
+    return my_string.split(" ").join("_");
+
+};
 for (index in full_table){
     var row = full_table[index];
     console.log(row);
     html = "<tr>" +
-        "<td>" + row["date1"] + "</td>" +
-        "<td>" + row["date2"] + "</td>" +
-        "<td>" + row["medication"] + "</td>" +
-        "<td>" + row["procedure"] + "</td>" +
-        "<td>" + row["encounter"] + "</td>" +
-        "<td>" + row["problem"] + "</td>" +
-        "<td>" + row["results"] + "</td>" +
-        "<td>" + row["social history"] + "</td>" +
+        "<td id='" + row["date1"] + "'>" + row["date1"] + "</td>" +
+        "<td id='" + row["date2"] + "'>" + row["date2"] + "</td>" +
+        "<td class='clipboard_trigger' id='" + space_to_underscore(row["medication"]) + "'>" + row["medication"] + "</td>" +
+        "<td class='clipboard_trigger' id='" + space_to_underscore(row["procedure"]) + "'>" + row["procedure"] + "</td>" +
+        "<td class='clipboard_trigger' id='" + space_to_underscore(row["encounter"]) + "'>" + row["encounter"] + "</td>" +
+        "<td class='clipboard_trigger' id='" + space_to_underscore(row["problem"]) + "'>" + row["problem"] + "</td>" +
+        "<td class='clipboard_trigger' id='" + space_to_underscore(row["results"]) + "'>" + row["results"] + "</td>" +
+        "<td class='clipboard_trigger' id='" + space_to_underscore(row["social history"]) + "'>" + row["social history"] + "</td>" +
         "</tr>";
     console.log(html);
     $('#patient_table tr:last').after(html);
 };
+register_trigger();

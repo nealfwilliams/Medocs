@@ -190,6 +190,8 @@ a {
     background-color: #a169ca;
     height:40px;
     color:white;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .indent{
