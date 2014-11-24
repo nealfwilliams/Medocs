@@ -405,6 +405,29 @@ function updateDemographics(bbDoc) {
     $patient_info.replaceWith($patient_details);
 }
 
+function updateAuthor(bbDoc) {
+    var $author_info = $('#author_info');
+    var $author_details = '<div class="textbox" id="author_info"> ' +
+                        '<div class="header">' +
+                        '<h3> Author Details</h3>' +
+                        '</div>' +
+                        '<div class="widget_content">' +
+                            '<p>' + bbDoc.data.document.author.name.prefix + '.' +
+                            bbDoc.data.document.author.name.given  + ' ' +
+                            bbDoc.data.document.author.name.family +
+                            '</p>' +
+                            '<p> Address: </p>' +
+                            '<p>' + bbDoc.data.document.author.address.street + '</p>' +
+                            '<p>' + bbDoc.data.document.author.address.city + ", " +
+                            bbDoc.data.document.author.address.state + " " +
+                            bbDoc.data.document.author.address.zip + '</p>' +
+                            '<p>' + bbDoc.data.document.author.phone.work + '</p>' +
+
+                        '</div>' +
+                    '</div>';
+    $author_info.replaceWith($author_details);
+}
+
 
 $( document ).ready(function() {
     var xhr = new XMLHttpRequest();
@@ -413,4 +436,5 @@ $( document ).ready(function() {
 
     var bbDoc = BlueButton(xhr.responseText);
     updateDemographics(bbDoc);
+    updateAuthor(bbDoc);
 });
