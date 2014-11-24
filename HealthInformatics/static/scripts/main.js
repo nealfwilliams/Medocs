@@ -383,3 +383,34 @@ for (index in full_table){
     $('#patient_table tr:last').after(html);
 };
 register_trigger();
+
+function updateDemographics(bbDoc) {
+    var $patient_info = $('#patient_info');
+    var $patient_details = '<div class="textbox" id="patient_info"> ' +
+                        '<div class="header">' +
+                        '<h3> Patient Details</h3>' +
+                        '</div>' +
+                        '<div class="widget_content">' +
+                            '<p> Last Name: ' + bbDoc.data.demographics.name.family + '</p>' +
+                            '<p> First Name: ' + bbDoc.data.demographics.name.given + '</p>' +
+                            '<p> Gender: ' + bbDoc.data.demographics.gender + '</p>' +
+                            '<p> Date of Birth: </p>' + bbDoc.data.demographics.dob + '</p>' +
+                            '<p> Address: </p>' +
+                            '<p>' + bbDoc.data.demographics.address.street + '</p>' +
+                            '<p>' + bbDoc.data.demographics.address.city + ", " +
+                            bbDoc.data.demographics.address.state + " " +
+                            bbDoc.data.demographics.address.zip + '</p>' +
+                        '</div>' +
+                    '</div>';
+    $patient_info.replaceWith($patient_details);
+}
+
+
+$( document ).ready(function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', '../static/ccd/MarlaCCD.xml', false);
+    xhr.send();
+
+    var bbDoc = BlueButton(xhr.responseText);
+    updateDemographics(bbDoc);
+});
