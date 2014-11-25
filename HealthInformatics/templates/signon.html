@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+<head>
+    <meta charset="utf=8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Health Informatics Project</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="/static/css/vis.css" rel="stylesheet" type="text/css"> -->
+    <link href='/static/css/Home.css' rel='stylesheet' type='text/css'>
+    <link href='/static/css/signon.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+    <script src="/static/scripts/vis.min.js"></script>
+    <link href="/static/css/vis.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="height: 100%; background-color: #ff707f;">
+<div id="image_holder">
+    <img id="logo" src="/static/images/medocs.png">
+</div>
+<div id="signon">
+    <div class="textbox">
+        <div class="header">
+            Physician Sign-On
+        </div>
+        <p> TO SIGN INTO DEMO, USE USERNAME "DEMO" AND PASSWORD "DEMO"  </p>
+        <div class="widget_content">
+            <form method="post" action="/sign_on/">
+            {% csrf_token %}
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+                <label for="password">Password</label>
+                <input type="text" id="password" name="password">
+                <button class="btn btn-primary"> Sign On </button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="/static/scripts/login.js"></script>

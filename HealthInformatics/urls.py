@@ -7,6 +7,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'healthapp.views.home', name='home'),
+    url(r'^sign_on/', 'healthapp.views.sign_on', name='sign_on')
     )
+
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

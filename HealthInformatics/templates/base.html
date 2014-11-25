@@ -102,6 +102,12 @@
         <div class="nav_content">
             <h3> Recent Issues </h3>
         </div>
+
+
+    </div>
+
+    <div id="bottom_image">
+        <img src="/static/images/medocs.png" >
     </div>
 </div>
 
@@ -112,10 +118,9 @@
         <h2 id="cm_header"> </h2>
         <div class="cm_widget" name="Timeline" id="timeline"></div>
         <div class="cm_widget" name="Profile" id="profile">
-
-            <div class="row">
-                <div class="col-sm-5 col-sm-offset-1">
-                    <div class="textbox" id="patient_info">
+            <div id="gen_info">
+                <div class="col-sm-5">
+                    <div class="textbox cm_textbox" id="patient_info">
                         <div class="header">
                             <h3> Patient Details</h3>
                         </div>
@@ -125,7 +130,7 @@
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="textbox" id="author_info">
+                    <div class="textbox cm_textbox" id="author_info">
                         <div class="header">
                             <h3>Author Details </h3>
                         </div>
@@ -134,8 +139,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div class="textbox" id="author_info">
+                <div class="col-sm-4">
+                    <div class="textbox cm_textbox" id="author_info">
                         <div class="header">
                             <h3>Custodian Details </h3>
                         </div>
@@ -148,7 +153,6 @@
                     </div>
                 </div>
             </div>
-
             <div id="accordion">
             <h3>Allergies, Adverse Reactions, and Alerts</h3>
             <div>
@@ -179,14 +183,14 @@
     <div class="cm_widget" name="Table" id="table">
         <table id="patient_table" style="width:80%; margin-left: auto; margin-right: auto;">
             <tr>
-                <td>Date / Start Date</td>
-                <td>Finish Date</td>
-                <td>Medications</td>
-                <td>Problems</td>
-                <td>Encounters</td>
-                <td>Procedures</td>
-                <td>Results</td>
-                <td>Social History</td>
+                <th>Date / Start Date</th>
+                <th>Finish Date</th>
+                <th>Medications</th>
+                <th>Problems</th>
+                <th>Encounters</th>
+                <th>Procedures</th>
+                <th>Results</th>
+                <th>Social History</th>
             </tr>
 
         </table>

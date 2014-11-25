@@ -321,13 +321,21 @@ var draw_tab = function(id) {
     var html = "<div class='tab' id='" + id + "_tab'>" +
         "<div class='header'> Example " +
         "<span class='glyphicon glyphicon-remove tab_remove' " + "name='" + id + "'></span></div></div>";
-    $("#clipboard_toolbar").append(html);
-    $(".tab_remove").click(function() {
-        console.log("close fired");
-        var name = $(this).attr("name");
-        console.log(name);
-        remove_widget(name);
-    });
+    if (num_tabs < 10) {
+        num_tabs = num_tabs + 1;
+        if (num_tabs > 4) {
+            tabwidth = str(80 / num_tabs) + "%";
+            $(".tab").css("width", tabwidth);
+        }
+        $("#clipboard_toolbar").append(html);
+        $(".tab_remove").unbind();
+        $(".tab_remove").click(function () {
+            console.log("close fired");
+            var name = $(this).attr("name");
+            console.log(name);
+            remove_widget(name);
+        });
+    }
 };
 
 var draw_widget = function(data) {
@@ -348,6 +356,7 @@ var remove_widget = function(name) {
     var tab_id = "#" + name + "_tab";
     $(widget_id).remove();
     $(tab_id).remove();
+    num_widgets --;
 };
 
 $(".tab_remove").click(function() {
@@ -386,7 +395,7 @@ register_trigger();
 
 function updateDemographics(bbDoc) {
     var $patient_info = $('#patient_info');
-    var $patient_details = '<div class="textbox" id="patient_info"> ' +
+    var $patient_details = '<div class="textbox cm_textbox" id="patient_info"> ' +
                         '<div class="header">' +
                         '<h3> Patient Details</h3>' +
                         '</div>' +
@@ -407,7 +416,7 @@ function updateDemographics(bbDoc) {
 
 function updateAuthor(bbDoc) {
     var $author_info = $('#author_info');
-    var $author_details = '<div class="textbox" id="author_info"> ' +
+    var $author_details = '<div class="textbox cm_textbox" id="author_info"> ' +
                         '<div class="header">' +
                         '<h3> Author Details</h3>' +
                         '</div>' +
@@ -427,7 +436,6 @@ function updateAuthor(bbDoc) {
                     '</div>';
     $author_info.replaceWith($author_details);
 }
-
 
 $( document ).ready(function() {
     var xhr = new XMLHttpRequest();

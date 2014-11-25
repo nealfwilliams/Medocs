@@ -1,0 +1,48 @@
+
+#signon{
+    display:none;
+    position:fixed;
+    top:46%;
+    width:40%;
+    left:30%;
+}
+
+.textbox>.header {
+    font-size: 24px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+
+.widget_content {
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:right;
+}
+#image_holder {
+    position: absolute;
+    left:10%;
+    top: 30%;
+    width:80%;
+    height:100%;
+}
+#image_holder > img{
+    width:100%;
+}
+input{
+    margin-bottom: 5px;
+}
+
+.btn{
+    display:block;
+    width: 50%;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+p{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 15px;
+}

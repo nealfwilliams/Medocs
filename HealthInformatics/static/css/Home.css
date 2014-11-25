@@ -7,7 +7,7 @@
     font-family: Oswald;
     color:white;
     position: fixed;
-    background-color: #282828;
+    background-color: #353284;
     width:20%;
     height:100%;
 }
@@ -64,7 +64,7 @@
     position: absolute;
     color:black;
     text-align: center;
-    background-color: #b8dfe6;
+    background-color: #ffffff;
     height:50%;
     width:100%;
     overflow-y: auto;
@@ -184,14 +184,34 @@ a {
     border-radius: 5px;
     text-align: left;
     margin: 20px;
+    box-shadow: 0px 2px 5px #191919;
+}
+
+.cm_textbox {
+    background-color: #d7e2ff;
 }
 
 .textbox>.header {
     background-color: #a169ca;
-    height:40px;
     color:white;
+    padding:5px;
     overflow-x: hidden;
     overflow-y: hidden;
+}
+
+.cm_textbox>.header {
+    background-color: #161616;
+}
+
+#gen_info {
+    overflow: auto;
+}
+
+#cm_header {
+    padding: 10px;
+    background-color: #aafffa;
+    margin-top:0px;
+    box-shadow: 0px 0px 3px black;
 }
 
 .indent{
@@ -220,7 +240,6 @@ a {
     margin-left: 10px;
 }
 
-
 .clipboard_widget{
     width: 20%;
     display:inline-block;
@@ -240,8 +259,23 @@ a {
 
 table, th, td {
     border: 1px solid black;
+    box-shadow: 0px 0px 1px #303030 inset;
 }
 
-td {
+th {
+    background-color: rgb(207,207,207);
+}
+td, th {
     padding:10px;
+
+}
+
+#bottom_image{
+    position:absolute;
+    width:100%;
+    top:90%;
+}
+#bottom_image>img{
+    width:64%;
+    margin-left:5%;
 }
