@@ -144,10 +144,14 @@ $(".cm_widget").on("cm_toggle", function()  {
 $(".nav_item").click(function(){
     var content = $(this).children(".nav_content");
     var item_id = $(this).attr("id");
+
+ /*
+    Was getting a JS error here, commenting for now
     item_id = "#" + item_id.substring(0, item_id.length - 4);
     console.log(item_id);
     $(item_id).trigger("cm_toggle");
     content.trigger("nav_toggle");
+*/
 });
 
 groups = [
@@ -437,12 +441,25 @@ function updateAuthor(bbDoc) {
     $author_info.replaceWith($author_details);
 }
 
-$( document ).ready(function() {
+function readCcd(xmlFilename) {
     var xhr = new XMLHttpRequest();
-    xhr.open('get', '../static/ccd/MarlaCCD.xml', false);
+    xhr.open('get', '../static/ccd/' + xmlFilename, false);
     xhr.send();
 
     var bbDoc = BlueButton(xhr.responseText);
+    updatePatient(bbDoc);
+}
+
+function updatePatient(bbDoc) {
     updateDemographics(bbDoc);
     updateAuthor(bbDoc);
+}
+
+$('#patient-select').on('change', function() {
+  readCcd( this.value );
+});
+
+
+$( document ).ready(function() {
+    readCcd("MarlaCCD.xml");
 });
