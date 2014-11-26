@@ -133,7 +133,7 @@ $(".cm_widget").on("cm_toggle", function()  {
     console.log("cm toggle called");
     $(this).show();
     var name = $(this).attr("name");
-    var patient = "Marla";
+    var patient = selectedPatient;
     $("#cm_header").html(patient + "'s " + name);
     var notTriggered = $('.cm_widget').not(this);
     notTriggered.each(function() {
@@ -462,6 +462,8 @@ function updateHeaders(bbDoc) {
     var $nav_header = $('#patient-nav-header');
     $nav_header.html("Patient: " + bbDoc.data.demographics.name.given +
         " " + bbDoc.data.demographics.name.family);
+
+    selectedPatient = bbDoc.data.demographics.name.given;
 }
 
 function updateButton(xmlFilename) {
@@ -476,7 +478,7 @@ $('#patient-select').on('change', function() {
 });
 
 
-var selectedPatient = "MarlaCCD.xml";
+var selectedPatient = "Marla";
 
 $( document ).ready(function() {
     readCcd("MarlaCCD.xml");
