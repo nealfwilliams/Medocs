@@ -446,11 +446,28 @@ function readCcd(xmlFilename) {
 
     var bbDoc = BlueButton(xhr.responseText);
     updatePatient(bbDoc);
+    updateButton(xmlFilename)
 }
 
 function updatePatient(bbDoc) {
+    updateHeaders(bbDoc);
     updateDemographics(bbDoc);
     updateAuthor(bbDoc);
+}
+
+function updateHeaders(bbDoc) {
+    var $header = $('#cm_header');
+    $header.html(bbDoc.data.demographics.name.given + "'s Profile");
+
+    var $nav_header = $('#patient-nav-header');
+    $nav_header.html("Patient: " + bbDoc.data.demographics.name.given +
+        " " + bbDoc.data.demographics.name.family);
+}
+
+function updateButton(xmlFilename) {
+    var $download_link = $('#download-link');
+    $download_link.attr("download",  xmlFilename)
+    $download_link.attr("href", "../static/ccd/" + xmlFilename)
 }
 
 $('#patient-select').on('change', function() {
