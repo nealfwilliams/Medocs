@@ -533,6 +533,8 @@ function populateCarePlan(bbDoc) {
     });
 }
 
+
+
 function populateEncounters(bbDoc) {
     // Each encounter record has an id of 'encounter-X', also the full
     // json record is attached via jquery.data for easy access in clipboard
@@ -552,6 +554,41 @@ function populateEncounters(bbDoc) {
         test_items.add({id: "encounter-" + i, content: record.name, group: 'Encounters', start: timeline_date});
     });
 }
+
+function populateFunctionalStatus(bbDoc) {
+    var $func_stat_data = $('#functional-status-data');
+    var funcStatData = bbDoc.data.functional_statuses;
+    $.each(funcStatData, function(i, record) {
+        var $func_stat_record = $("<p class='clipboard_trigger' id='functional-status-" + i + "'>Date:" +
+            $.datepicker.formatDate('MM dd, yy', new Date(record.date)) +
+            "  -  Functional Status : " + record.name +
+            "</p>");
+        $func_stat_record.data("json-record", record);
+        $func_stat_data.append($func_stat_record);
+
+            // Add formatted record to timeline data
+        var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(record.date));
+        test_items.add({id: "functional-status-" + i, content: record.name, group: 'Functional Status', start: timeline_date});
+    });
+}
+
+function populateImmunizationStatus(bbDoc) {
+    var $immune_data = $('#immunizations-data');
+    var immuneData = bbDoc.data.immunizations;
+    $.each(immuneData, function(i, record) {
+        var $immune_record = $("<p class='clipboard_trigger' id='immunization-" + i + "'>Date:" +
+            $.datepicker.formatDate('MM dd, yy', new Date(record.date)) +
+            "  -  Immunization : " + record.product.name +
+            "</p>");
+        $immune_record.data("json-record", record);
+        $immune_data.append($immune_record);
+
+            // Add formatted record to timeline data
+        var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(record.date));
+        test_items.add({id: "immunization-" + i, content: record.name, group: 'Immunization', start: timeline_date});
+    });
+}
+
 
 function populateMedication(bbDoc) {
     var $medication_data = $('#medication-data');
@@ -595,6 +632,8 @@ function updatePatient(bbDoc) {
     populateAllergies(bbDoc);
     populateCarePlan(bbDoc);
     populateEncounters(bbDoc);
+    populateFunctionalStatus(bbDoc);
+    populateImmunizationStatus(bbDoc);
     populateMedication(bbDoc);
 
     register_trigger();
