@@ -389,10 +389,6 @@ $(".tab_remove").click(function() {
 });
 
 $("#accordion").accordion({ heightStyle : "content"});
-/*var drawTable = function(){
-    for ();
-
-};*/
 
 var space_to_underscore = function(my_string){
     return my_string.split(" ").join("_");
@@ -495,6 +491,26 @@ function updatePatientDemo(bbDoc) {
     $custodian_info.replaceWith($custodian_details);
 }
 
+function populateAllergies(bbDoc) {
+    var $allergies_data = $('#allergies-data');
+    var allergiesData = bbDoc.data.allergies;
+    $.each(allergiesData, function(i, record) {
+        var $allergy_record = $("<p class='clipboard_trigger' id='allergy-" + i + "'>Date Range:" +
+            $.datepicker.formatDate('MM dd, yy', new Date(record.date_range.start)) +
+            " to " +
+            $.datepicker.formatDate('MM dd, yy', new Date(record.date_range.end)) +
+            "  -  " + record.reaction.name + " - Allergen: " + record.allergen.name +
+            "</p>");
+        $allergy_record.data("json-record", record);
+        $allergies_data.append($allergy_record);
+
+           // Add formatted record to timeline data
+        var timeline_start = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.start));
+        var timeline_end = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.end));
+        test_items.add({id: "allergy-" + i, content: record.text, group: 'Allergies', start: timeline_start, end: timeline_end});
+    });
+}
+
 function populateEncounters(bbDoc) {
     // Each encounter record has an id of 'encounter-X', also the full
     // json record is attached via jquery.data for easy access in clipboard
@@ -534,7 +550,6 @@ function populateMedication(bbDoc) {
         var timeline_start = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.start));
         var timeline_end = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.end));
         test_items.add({id: "medication-" + i, content: record.text, group: 'Medications', start: timeline_start, end: timeline_end});
-        test_items.get()
     });
 
 
@@ -551,10 +566,13 @@ function readCcd(xmlFilename) {
 }
 
 function updatePatient(bbDoc) {
+    test_items.clear();
+
     updateHeaders(bbDoc);
     updateDemographics(bbDoc);
     updateAuthor(bbDoc);
     updatePatientDemo(bbDoc);
+    populateAllergies(bbDoc);
     populateEncounters(bbDoc);
     populateMedication(bbDoc);
 
