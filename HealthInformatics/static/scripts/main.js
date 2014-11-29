@@ -426,8 +426,8 @@ $("#accordion").accordion({ heightStyle : "content"});
 
 var space_to_underscore = function(my_string){
     return my_string.split(" ").join("_");
-
 };
+
 for (index in full_table){
     var row = full_table[index];
     console.log(row);
@@ -525,8 +525,6 @@ function updatePatientDemo(bbDoc) {
     $custodian_info.replaceWith($custodian_details);
 }
 
-<<<<<<< HEAD
-=======
 function populateAllergies(bbDoc) {
     var $allergies_data = $('#allergies-data');
     var allergiesData = bbDoc.data.allergies;
@@ -552,7 +550,7 @@ function populateCarePlan(bbDoc) {
     var carePlanData = bbDoc.data.care_plan;
     $.each(carePlanData, function(i, record) {
 
-        var care_plan_record_str = "<p class='clipboard_trigger' id='care-plan-" + i + "'>"
+        var care_plan_record_str = "<p class='clipboard_trigger' id='care-plan-" + i + "'>";
         if (record.text != null) {
             care_plan_record_str += record.text + " ";
 
@@ -570,7 +568,6 @@ function populateCarePlan(bbDoc) {
 }
 
 
->>>>>>> f9fe1fb76e80fed7ba092a0775e103b3741154a0
 
 function populateEncounters(bbDoc) {
     // Each encounter record has an id of 'encounter-X', also the full
