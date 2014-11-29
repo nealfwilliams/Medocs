@@ -511,6 +511,28 @@ function populateAllergies(bbDoc) {
     });
 }
 
+function populateCarePlan(bbDoc) {
+    var $care_plan_data = $('#care-plan-data');
+    var carePlanData = bbDoc.data.care_plan;
+    $.each(carePlanData, function(i, record) {
+
+        var care_plan_record_str = "<p class='clipboard_trigger' id='care-plan-" + i + "'>"
+        if (record.text != null) {
+            care_plan_record_str += record.text + " ";
+
+        }
+        if (record.name != null) {
+            care_plan_record_str += " - " + record.name;
+        }
+        care_plan_record_str += "</p>";
+
+        var $care_plan_record = $(care_plan_record_str);
+        $care_plan_record.data("json-record", record);
+        $care_plan_data.append($care_plan_record);
+        // No date associated, so we don't add to timeline
+    });
+}
+
 function populateEncounters(bbDoc) {
     // Each encounter record has an id of 'encounter-X', also the full
     // json record is attached via jquery.data for easy access in clipboard
@@ -529,8 +551,6 @@ function populateEncounters(bbDoc) {
         var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(record.date));
         test_items.add({id: "encounter-" + i, content: record.name, group: 'Encounters', start: timeline_date});
     });
-
-
 }
 
 function populateMedication(bbDoc) {
@@ -573,6 +593,7 @@ function updatePatient(bbDoc) {
     updateAuthor(bbDoc);
     updatePatientDemo(bbDoc);
     populateAllergies(bbDoc);
+    populateCarePlan(bbDoc);
     populateEncounters(bbDoc);
     populateMedication(bbDoc);
 
