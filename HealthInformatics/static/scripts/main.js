@@ -388,7 +388,7 @@ $(".tab_remove").click(function() {
     remove_widget(name);
 });
 
-$("#accordion").accordion();
+$("#accordion").accordion({ heightStyle : "content"});
 /*var drawTable = function(){
     for ();
 
@@ -534,6 +534,7 @@ function populateMedication(bbDoc) {
         var timeline_start = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.start));
         var timeline_end = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.end));
         test_items.add({id: "medication-" + i, content: record.text, group: 'Medications', start: timeline_start, end: timeline_end});
+        test_items.get()
     });
 
 
