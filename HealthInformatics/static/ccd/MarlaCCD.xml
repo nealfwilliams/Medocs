@@ -76,7 +76,7 @@
                      </thead>
                      <tbody>
                           <tr>
-                               <td><content ID="Encounter1"/>20110423</td>
+                               <td><content ID="Encounter1"/>20141101</td>
                                <td>Annual Physical Exam</td>
                                <td>Essential Hypertension</td>
                                <td>401.9</td>
@@ -88,8 +88,8 @@
                                <td>This is an example of Note containing. Use this space for a note.</td>
                           </tr>
                           <tr>
-                               <td><content ID="Encounter2"/>20110424</td>
-                               <td>bbbbbbbbb</td>
+                               <td><content ID="Encounter2"/>20141031</td>
+                               <td>Called Appointment</td>
                                <td>Essential Hypertension</td>
                                <td>401.9</td>
                                <td>68 inches</td>
@@ -97,11 +97,11 @@
                                <td>78</td>
                                <td>32</td>
                                <td>160/96</td>
-                               <td>This is an example of Note containing,. Use this space for a note.</td>
+                               <td>Routine appointment regarding high blood pressure</td>
                           </tr>
                           <tr>
-                               <td><content ID="Encounter3"/>20110425</td>
-                               <td>cccccccccc</td>
+                               <td><content ID="Encounter3"/>20141015</td>
+                               <td>Emergency Room Visit</td>
                                <td>Essential Hypertension</td>
                                <td>401.9</td>
                                <td>69 inches</td>
@@ -109,7 +109,7 @@
                                <td>78</td>
                                <td>32</td>
                                <td>160/97</td>
-                               <td>This is an, exampl,e of Note containing,. Use t,is, space for a note.</td>
+                               <td>Immediate care incident, patient complained of chest pains.</td>
                           </tr>
                      </tbody>
                 </table></text>
@@ -121,29 +121,29 @@
                 <originalText>Checkup Examination<reference value="#Encounter1"/></originalText>
               </code>
               <statusCode code="completed"/>
-              <effectiveTime value="20110423"/>
+              <effectiveTime value="20141115"/>
             </encounter>
           </entry>
           <entry typeCode="DRIV">
             <encounter classCode="ENC" moodCode="EVN">
               <templateId root="2.16.840.1.113883.10.20.22.4.49"/>
               <id root="2636c8cf-a7a7-4f56-b476-12656fb47596"/>
-              <code code="99241" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT" codeSystemVersion="4" displayName="Annual Physical Exam">
+              <code code="99241" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT" codeSystemVersion="4" displayName="Routine Appointment">
                 <originalText>Checkup Examination<reference value="#Encounter2"/></originalText>
               </code>
               <statusCode code="completed"/>
-              <effectiveTime value="20110424"/>
+              <effectiveTime value="20141031"/>
             </encounter>
           </entry>
           <entry typeCode="DRIV">
             <encounter classCode="ENC" moodCode="EVN">
               <templateId root="2.16.840.1.113883.10.20.22.4.49"/>
               <id root="f332bac9-bead-4d9f-933e-c0f6018d2e70"/>
-              <code code="99241" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT" codeSystemVersion="4" displayName="Annual Physical Exam">
+              <code code="99241" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT" codeSystemVersion="4" displayName="Emergency Room Visit">
                 <originalText>Checkup Examination<reference value="#Encounter3"/></originalText>
               </code>
               <statusCode code="completed"/>
-              <effectiveTime value="20110425"/>
+              <effectiveTime value="20141015"/>
             </encounter>
           </entry>
         </section>
@@ -194,8 +194,8 @@
               <text><reference value="#Medication1"/>Lasix 40 mg, 1 tablet at bedtime</text>
               <statusCode code="completed"/>
               <effectiveTime xsi:type="IVL_TS">
-                <low value="20050501"/>
-                <high value="20140701"/>
+                <low value="20140101"/>
+                <high value="20141101"/>
               </effectiveTime>
               <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="oral"/>
               <doseQuantity value="1"/>
