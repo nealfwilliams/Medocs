@@ -677,7 +677,7 @@ function populateResultsLab(bbDoc) {
 
                 // Add individual lab report to timeline
                 var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(test_record.date));
-                test_items.add({id: "lab-result-" + i, content: record.name + " " + test_record.value, group: 'Lab Results', start: timeline_date});
+                test_items.add({id: "lab-result-" + j, content: record.name + " " + test_record.value, group: 'Lab Results', start: timeline_date});
             });
 
         lab_record_str += "</p>";
@@ -686,6 +686,29 @@ function populateResultsLab(bbDoc) {
         $lab_data.append($lab_record);
     });
 }
+
+function populateVitals(bbDoc) {
+    var $vitals_data = $('#vitals-data');
+    var vitalsData = bbDoc.data.vitals;
+    $.each(vitalsData, function(i, record) {
+        var vitals_record_str = "<p class='clipboard_trigger' id='vitals-" + i + "'>Measurements :";
+        var testData = record.results;
+        $.each(testData, function(j , test_record) {
+            vitals_record_str += "<br>" + $.datepicker.formatDate('MM dd, yy', new Date(record.date));
+            vitals_record_str += " Name: " + test_record.name + " " + test_record.value + " " + test_record.unit;
+
+            // Add individual vitals measurement to timeline
+            var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(record.date));
+            //test_items.add({id: "vitals-" + j, content: test_record.name + " " + test_record.value + " " + test_record.unit, group: 'Vitals Measurement', start: timeline_date});
+        });
+
+        vitals_record_str += "</p>";
+        $vitals_record = $(vitals_record_str);
+        $vitals_record.data("json-record", record);
+        $vitals_data.append($vitals_record);
+    });
+}
+
 
 function readCcd(xmlFilename) {
     var xhr = new XMLHttpRequest();
@@ -714,6 +737,7 @@ function updatePatient(bbDoc) {
     populateProblems(bbDoc);
     populateProcedures(bbDoc);
     populateResultsLab(bbDoc);
+    populateVitals(bbDoc);
 
     register_trigger();
 }
