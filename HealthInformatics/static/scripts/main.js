@@ -397,6 +397,11 @@ register_trigger();
 
 function updateDemographics(bbDoc) {
     var $patient_info = $('#patient_info');
+
+    if(bbDoc.data.demographics.dob != null) {
+        var $birthdate = $.datepicker.formatDate('MM dd, yy', new Date(bbDoc.data.demographics.dob));
+    }
+
     var $patient_details = '<div class="textbox cm_textbox" id="patient_info"> ' +
                         '<div class="header">' +
                         '<h3> Patient Details</h3>' +
@@ -405,12 +410,13 @@ function updateDemographics(bbDoc) {
                             '<p> Last Name: ' + bbDoc.data.demographics.name.family + '</p>' +
                             '<p> First Name: ' + bbDoc.data.demographics.name.given + '</p>' +
                             '<p> Gender: ' + bbDoc.data.demographics.gender + '</p>' +
-                            '<p> Date of Birth: </p>' + bbDoc.data.demographics.dob + '</p>' +
+                            '<p> Date of Birth: </p>' + $birthdate + '</p>' +
                             '<p> Address: </p>' +
                             '<p>' + bbDoc.data.demographics.address.street + '</p>' +
                             '<p>' + bbDoc.data.demographics.address.city + ", " +
                             bbDoc.data.demographics.address.state + " " +
                             bbDoc.data.demographics.address.zip + '</p>' +
+                            '<p>'
                         '</div>' +
                     '</div>';
     $patient_info.replaceWith($patient_details);
@@ -439,6 +445,35 @@ function updateAuthor(bbDoc) {
     $author_info.replaceWith($author_details);
 }
 
+function updatePatientDemo(bbDoc) {
+    var $custodian_info = $('#custodian_info');
+
+    if(bbDoc.data.demographics.dob != null) {
+        var $birthdate = $.datepicker.formatDate('MM dd, yy', new Date(bbDoc.data.demographics.dob));
+        var dob = new Date($birthdate);
+        var today = new Date();
+        var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+    }
+
+    var $custodian_details = '<div class="textbox cm_textbox" id="custodian_info"> ' +
+                        '<div class="header">' +
+                        '<h3>Patient Overview</h3>' +
+                        '</div>' +
+                        '<div class="widget_content">' +
+                            '<p>Age: ' + age + '</p>' +
+                            '<p>Sex: ' + bbDoc.data.demographics.gender + '</p>' +
+                            '<p>Primary Language: ' + bbDoc.data.demographics.language + '</p>' +
+                            '<p>Race: ' + bbDoc.data.demographics.race + '</p>' +
+                            '<p><b>Contact Info:' + '</p>' +
+                            '<p>Home Phone: ' + bbDoc.data.demographics.phone.home + '</p>' +
+                            '<p>Work Phone: ' + bbDoc.data.demographics.phone.work + '</p>' +
+                            '<p>Mobile Phone: ' + bbDoc.data.demographics.phone.mobile + '</p>' +
+                            '</p>Email: ' + bbDoc.data.demographics.email + '</p>' +
+                        '</div>' +
+                    '</div>';
+    $custodian_info.replaceWith($custodian_details);
+}
+
 function readCcd(xmlFilename) {
     var xhr = new XMLHttpRequest();
     xhr.open('get', '../static/ccd/' + xmlFilename, false);
@@ -453,6 +488,7 @@ function updatePatient(bbDoc) {
     updateHeaders(bbDoc);
     updateDemographics(bbDoc);
     updateAuthor(bbDoc);
+    updatePatientDemo(bbDoc);
 }
 
 function updateHeaders(bbDoc) {
@@ -465,6 +501,7 @@ function updateHeaders(bbDoc) {
 
     selectedPatient = bbDoc.data.demographics.name.given;
 }
+
 
 function updateButton(xmlFilename) {
     var $download_link = $('#download-link');
