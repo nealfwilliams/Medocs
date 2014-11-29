@@ -414,7 +414,6 @@ var remove_widget = function(name) {
     var tab_id = "#" + name + "_tab";
     $(widget_id).remove();
     $(tab_id).remove();
-    num_widgets --;
 };
 
 $(".tab_remove").click(function() {
