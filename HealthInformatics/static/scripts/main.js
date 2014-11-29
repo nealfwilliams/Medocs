@@ -346,6 +346,41 @@ var draw_tab = function(id) {
     }
 };
 
+var check_nullity = function(node){
+    if (!(node)) {
+        return true;
+    }
+    if (typeof(node) != "object"){
+        return false;
+    }
+    var helper_bool = true;
+    for (index in node) {
+        helper_bool = helper_bool && check_nullity(node[index]);
+    }
+    return helper_bool;
+};
+
+var render_node = function(key, node){
+
+    var html_return = "";
+    if (check_nullity(node)){
+        return html_return;
+    }
+
+    if (typeof(node) != "object") {
+        html_return = "<div class='leaf_header'>" + String(key) + ":</div><div class='leaf'>" + String(node) + "</div>";
+        return html_return;
+    }
+
+    html_return = "<div class='node_header'>" + String(key) + ":</div><div class='node'>";
+    for (index in node) {
+        html_return = html_return + render_node(index, node[index]);
+    }
+
+    html_return = html_return + "</div>";
+    return html_return;
+};
+
 var draw_widget = function(data) {
     // This needs to be cleaned up,
     // quick fix is to recursively iterate through json and print out leaf values
@@ -360,7 +395,7 @@ var draw_widget = function(data) {
     var $json_data = $source_widget.data("json-record");
     $.each($json_data, function(key, value) {
         if(value) {
-            html = html + "<p>" + key + ": " + JSON.stringify(value) + "</p>";
+            html = html +  render_node(key, value);
         }
     });
 
@@ -495,6 +530,7 @@ function updatePatientDemo(bbDoc) {
     $custodian_info.replaceWith($custodian_details);
 }
 
+
 function populateEncounters(bbDoc) {
     // Each encounter record has an id of 'encounter-X', also the full
     // json record is attached via jquery.data for easy access in clipboard
@@ -571,7 +607,6 @@ function updateHeaders(bbDoc) {
     selectedPatient = bbDoc.data.demographics.name.given;
 }
 
-
 function updateButton(xmlFilename) {
     var $download_link = $('#download-link');
     $download_link.attr("download",  xmlFilename)
@@ -589,3 +624,4 @@ var selectedPatient = "Marla";
 $( document ).ready(function() {
     readCcd("MarlaCCD.xml");
 });
+
