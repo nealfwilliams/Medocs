@@ -3,6 +3,10 @@ var nav_icon = $("#nav_toggle");
 var num_tabs = 0;
 
 var test_items = new vis.DataSet([
+  ]);
+
+// Sample data, this is now populated via JSON
+/*
     {id: 1, content: 'Lasix 40mg', group: 'Medications', start: '2011-04-23'},
     {id: 2, content: 'Annual Physical Exam', group: 'Encounters', start: '2011-04-23'},
     {id: 3, content: 'bbbbbbbbbb', group: 'Encounters', start: '2011-04-24'},
@@ -11,7 +15,8 @@ var test_items = new vis.DataSet([
     {id: 6, content: 'item 4', start: '2013-04-16', end: '2013-04-19'},
     {id: 7, content: 'item 5', start: '2013-04-25'},
     {id: 8, content: 'item 6', start: '2013-04-27'}
-  ]);
+*/
+
 
 var tl_container = document.getElementById('timeline');
 
@@ -23,6 +28,7 @@ var options = {
     item: 8
   }
 };
+
 
 var timeline = new vis.Timeline(tl_container, test_items, options);
 
@@ -315,13 +321,13 @@ var register_trigger = function(){
 };
 
 var findData = function(id){
-    data = {"id": id, "name":"Example "+ id};
+    data = {"id": id, "name":"Record Details of " + id };
     return data;
 };
 
 var draw_tab = function(id) {
     var html = "<div class='tab' id='" + id + "_tab'>" +
-        "<div class='header'> Example " +
+        "<div class='header'>" + id +
         "<span class='glyphicon glyphicon-remove tab_remove' " + "name='" + id + "'></span></div></div>";
     if (num_tabs < 10) {
         num_tabs = num_tabs + 1;
@@ -341,14 +347,29 @@ var draw_tab = function(id) {
 };
 
 var draw_widget = function(data) {
+    // This needs to be cleaned up,
+    // quick fix is to recursively iterate through json and print out leaf values
+
     var id = data["id"];
     var html = "<div class='textbox clipboard_widget' id= '" + id + "_widget'>" + "\
         <div class='header'> \
         <h3> " + data["name"] + "</h3></div> \
-        <div class='widget_content'></div></div>";
+        <div class='widget_content'>";
+
+    var $source_widget = $('#' + id);
+    var $json_data = $source_widget.data("json-record");
+    $.each($json_data, function(key, value) {
+        if(value) {
+            html = html + "<p>" + key + ": " + JSON.stringify(value) + "</p>";
+        }
+    });
+
+    html = html + "</div></div>";
+
     draw_tab(id);
     $("#default_text").hide();
     $("#clipboard").prepend(html);
+
     $(".clipboard_widget").draggable({ containment: "parent", stack: ".clipboard_widget" });
     $(".clipboard_widget").resizable();
 };
@@ -485,9 +506,15 @@ function populateEncounters(bbDoc) {
             $.datepicker.formatDate('MM dd, yy', new Date(record.date)) +
             "  -  Primary Reason : " + record.name +
             "</p>");
-        $encounter_record.data("encounter-record", record);
+        $encounter_record.data("json-record", record);
         $encounters_data.append($encounter_record);
+
+            // Add formatted record to timeline data
+        var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(record.date));
+        test_items.add({id: "encounter-" + i, content: record.name, group: 'Encounters', start: timeline_date});
     });
+
+
 }
 
 function populateMedication(bbDoc) {
@@ -500,9 +527,16 @@ function populateMedication(bbDoc) {
             $.datepicker.formatDate('MM dd, yy', new Date(record.date_range.end)) +
             "  -  " + record.text +
             "</p>");
-        $medication_record.data("medication-record", record);
+        $medication_record.data("json-record", record);
         $medication_data.append($medication_record);
+
+    // Add formatted record to timeline data
+        var timeline_start = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.start));
+        var timeline_end = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.end));
+        test_items.add({id: "medication-" + i, content: record.text, group: 'Medications', start: timeline_start, end: timeline_end});
     });
+
+
 }
 
 function readCcd(xmlFilename) {
