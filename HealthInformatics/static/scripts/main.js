@@ -423,11 +423,7 @@ $(".tab_remove").click(function() {
     remove_widget(name);
 });
 
-$("#accordion").accordion();
-/*var drawTable = function(){
-    for ();
-
-};*/
+$("#accordion").accordion({ heightStyle : "content"});
 
 var space_to_underscore = function(my_string){
     return my_string.split(" ").join("_");
@@ -530,6 +526,52 @@ function updatePatientDemo(bbDoc) {
     $custodian_info.replaceWith($custodian_details);
 }
 
+<<<<<<< HEAD
+=======
+function populateAllergies(bbDoc) {
+    var $allergies_data = $('#allergies-data');
+    var allergiesData = bbDoc.data.allergies;
+    $.each(allergiesData, function(i, record) {
+        var $allergy_record = $("<p class='clipboard_trigger' id='allergy-" + i + "'>Date Range:" +
+            $.datepicker.formatDate('MM dd, yy', new Date(record.date_range.start)) +
+            " to " +
+            $.datepicker.formatDate('MM dd, yy', new Date(record.date_range.end)) +
+            "  -  " + record.reaction.name + " - Allergen: " + record.allergen.name +
+            "</p>");
+        $allergy_record.data("json-record", record);
+        $allergies_data.append($allergy_record);
+
+           // Add formatted record to timeline data
+        var timeline_start = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.start));
+        var timeline_end = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.end));
+        test_items.add({id: "allergy-" + i, content: record.text, group: 'Allergies', start: timeline_start, end: timeline_end});
+    });
+}
+
+function populateCarePlan(bbDoc) {
+    var $care_plan_data = $('#care-plan-data');
+    var carePlanData = bbDoc.data.care_plan;
+    $.each(carePlanData, function(i, record) {
+
+        var care_plan_record_str = "<p class='clipboard_trigger' id='care-plan-" + i + "'>"
+        if (record.text != null) {
+            care_plan_record_str += record.text + " ";
+
+        }
+        if (record.name != null) {
+            care_plan_record_str += " - " + record.name;
+        }
+        care_plan_record_str += "</p>";
+
+        var $care_plan_record = $(care_plan_record_str);
+        $care_plan_record.data("json-record", record);
+        $care_plan_data.append($care_plan_record);
+        // No date associated, so we don't add to timeline
+    });
+}
+
+
+>>>>>>> f9fe1fb76e80fed7ba092a0775e103b3741154a0
 
 function populateEncounters(bbDoc) {
     // Each encounter record has an id of 'encounter-X', also the full
@@ -549,9 +591,59 @@ function populateEncounters(bbDoc) {
         var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(record.date));
         test_items.add({id: "encounter-" + i, content: record.name, group: 'Encounters', start: timeline_date});
     });
-
-
 }
+
+function populateFunctionalStatus(bbDoc) {
+    var $func_stat_data = $('#functional-status-data');
+    var funcStatData = bbDoc.data.functional_statuses;
+    $.each(funcStatData, function(i, record) {
+        var $func_stat_record = $("<p class='clipboard_trigger' id='functional-status-" + i + "'>Date:" +
+            $.datepicker.formatDate('MM dd, yy', new Date(record.date)) +
+            "  -  Functional Status : " + record.name +
+            "</p>");
+        $func_stat_record.data("json-record", record);
+        $func_stat_data.append($func_stat_record);
+
+            // Add formatted record to timeline data
+        var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(record.date));
+        test_items.add({id: "functional-status-" + i, content: record.name, group: 'Functional Status', start: timeline_date});
+    });
+}
+
+function populateImmunizationStatus(bbDoc) {
+    var $immune_data = $('#immunizations-data');
+    var immuneData = bbDoc.data.immunizations;
+    $.each(immuneData, function(i, record) {
+        var $immune_record = $("<p class='clipboard_trigger' id='immunization-" + i + "'>Date:" +
+            $.datepicker.formatDate('MM dd, yy', new Date(record.date)) +
+            "  -  Immunization : " + record.product.name +
+            "</p>");
+        $immune_record.data("json-record", record);
+        $immune_data.append($immune_record);
+
+            // Add formatted record to timeline data
+        var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(record.date));
+        test_items.add({id: "immunization-" + i, content: record.name, group: 'Immunization', start: timeline_date});
+    });
+}
+
+function populateDelImmunizationStatus(bbDoc) {
+    var $immune_data = $('#declined-immunizations-data');
+    var immuneData = bbDoc.data.immunization_declines;
+    $.each(immuneData, function(i, record) {
+        var $immune_record = $("<p class='clipboard_trigger' id='declined-immunization-" + i + "'>Date:" +
+            $.datepicker.formatDate('MM dd, yy', new Date(record.date)) +
+            "  -  Declined Immunization : " + record.product.name +
+            "</p>");
+        $immune_record.data("json-record", record);
+        $immune_data.append($immune_record);
+
+            // Add formatted record to timeline data
+        var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(record.date));
+        test_items.add({id: "declined-immunization-" + i, content: record.name, group: 'Declined Immunizations', start: timeline_date});
+    });
+}
+
 
 function populateMedication(bbDoc) {
     var $medication_data = $('#medication-data');
@@ -571,9 +663,90 @@ function populateMedication(bbDoc) {
         var timeline_end = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.end));
         test_items.add({id: "medication-" + i, content: record.text, group: 'Medications', start: timeline_start, end: timeline_end});
     });
-
-
 }
+
+function populateProblems(bbDoc) {
+    var $problems_data = $('#problems-data');
+    var problemsData = bbDoc.data.problems;
+    $.each(problemsData, function(i, record) {
+        var $problem_record = $("<p class='clipboard_trigger' id='problem-" + i + "'>Date Range:" +
+            $.datepicker.formatDate('MM dd, yy', new Date(record.date_range.start)) +
+            " to " +
+            $.datepicker.formatDate('MM dd, yy', new Date(record.date_range.end)) +
+            "  -  " + record.name + " - Current Status: " + record.status +
+            "</p>");
+        $problem_record.data("json-record", record);
+        $problems_data.append($problem_record);
+
+    // Add formatted record to timeline data
+        var timeline_start = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.start));
+        var timeline_end = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.end));
+        test_items.add({id: "problem-" + i, content: record.text, group: 'Problems', start: timeline_start, end: timeline_end});
+    });
+}
+
+function populateProcedures(bbDoc) {
+    var $procedure_data = $('#procedure-data');
+    var procData = bbDoc.data.procedures;
+    $.each(procData, function(i, record) {
+        var $proc_record = $("<p class='clipboard_trigger' id='procedure-" + i + "'>Date:" +
+            $.datepicker.formatDate('MM dd, yy', new Date(record.date)) +
+            "  -  Procedure : " + record.name +
+            "</p>");
+        $proc_record.data("json-record", record);
+        $procedure_data.append($proc_record);
+
+            // Add formatted record to timeline data
+        var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(record.date));
+        test_items.add({id: "procedure-" + i, content: record.name, group: 'Procedures', start: timeline_date});
+    });
+}
+
+function populateResultsLab(bbDoc) {
+    var $lab_data = $('#lab-data');
+    var labData = bbDoc.data.results;
+    $.each(labData, function(i, record) {
+        var lab_record_str = "<p class='clipboard_trigger' id='lab-" + i + "'>Lab Work:" +
+            "  -  Test Name : " + record.name;
+            var testData = record.tests;
+            $.each(testData, function(j , test_record) {
+                lab_record_str += "<br>" + $.datepicker.formatDate('MM dd, yy', new Date(test_record.date));
+                lab_record_str += " Name: " + test_record.name + " " + test_record.value + " " + test_record.unit;
+
+                // Add individual lab report to timeline
+                var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(test_record.date));
+                test_items.add({id: "lab-result-" + j, content: record.name + " " + test_record.value, group: 'Lab Results', start: timeline_date});
+            });
+
+        lab_record_str += "</p>";
+        $lab_record = $(lab_record_str);
+        $lab_record.data("json-record", record);
+        $lab_data.append($lab_record);
+    });
+}
+
+function populateVitals(bbDoc) {
+    var $vitals_data = $('#vitals-data');
+    var vitalsData = bbDoc.data.vitals;
+    $.each(vitalsData, function(i, record) {
+        var vitals_record_str = "<p class='clipboard_trigger' id='vitals-" + i + "'>Measurements :";
+        var testData = record.results;
+        $.each(testData, function(j , test_record) {
+            vitals_record_str += "<br>" + $.datepicker.formatDate('MM dd, yy', new Date(record.date));
+            vitals_record_str += " Name: " + test_record.name + " " + test_record.value + " " + test_record.unit;
+
+            // Add individual vitals measurement to timeline
+            var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(record.date));
+            //test_items.add({id: "vitals-" + j, content: test_record.name + " " + test_record.value + " " + test_record.unit, group: 'Vitals Measurement', start: timeline_date});
+        });
+
+        vitals_record_str += "</p>";
+        $vitals_record = $(vitals_record_str);
+        $vitals_record.data("json-record", record);
+        $vitals_data.append($vitals_record);
+    });
+}
+
 
 function readCcd(xmlFilename) {
     var xhr = new XMLHttpRequest();
@@ -586,12 +759,23 @@ function readCcd(xmlFilename) {
 }
 
 function updatePatient(bbDoc) {
+    test_items.clear();
+
     updateHeaders(bbDoc);
     updateDemographics(bbDoc);
     updateAuthor(bbDoc);
     updatePatientDemo(bbDoc);
+    populateAllergies(bbDoc);
+    populateCarePlan(bbDoc);
     populateEncounters(bbDoc);
+    populateFunctionalStatus(bbDoc);
+    populateImmunizationStatus(bbDoc);
+    populateDelImmunizationStatus(bbDoc);
     populateMedication(bbDoc);
+    populateProblems(bbDoc);
+    populateProcedures(bbDoc);
+    populateResultsLab(bbDoc);
+    populateVitals(bbDoc);
 
     register_trigger();
 }
