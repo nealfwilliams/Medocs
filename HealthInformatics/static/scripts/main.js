@@ -474,6 +474,37 @@ function updatePatientDemo(bbDoc) {
     $custodian_info.replaceWith($custodian_details);
 }
 
+function populateEncounters(bbDoc) {
+    // Each encounter record has an id of 'encounter-X', also the full
+    // json record is attached via jquery.data for easy access in clipboard
+
+    var $encounters_data = $('#encounters-data');
+    var encountersData = bbDoc.data.encounters;
+    $.each(encountersData, function(i, record) {
+        var $encounter_record = $("<p class='clipboard_trigger' id='encounter-" + i + "'>Date:" +
+            $.datepicker.formatDate('MM dd, yy', new Date(record.date)) +
+            "  -  Primary Reason : " + record.name +
+            "</p>");
+        $encounter_record.data("encounter-record", record);
+        $encounters_data.append($encounter_record);
+    });
+}
+
+function populateMedication(bbDoc) {
+    var $medication_data = $('#medication-data');
+    var medicationData = bbDoc.data.medications;
+    $.each(medicationData, function(i, record) {
+        var $medication_record = $("<p class='clipboard_trigger' id='medication-" + i + "'>Date Range:" +
+            $.datepicker.formatDate('MM dd, yy', new Date(record.date_range.start)) +
+            " to " +
+            $.datepicker.formatDate('MM dd, yy', new Date(record.date_range.end)) +
+            "  -  " + record.text +
+            "</p>");
+        $medication_record.data("medication-record", record);
+        $medication_data.append($medication_record);
+    });
+}
+
 function readCcd(xmlFilename) {
     var xhr = new XMLHttpRequest();
     xhr.open('get', '../static/ccd/' + xmlFilename, false);
@@ -489,6 +520,10 @@ function updatePatient(bbDoc) {
     updateDemographics(bbDoc);
     updateAuthor(bbDoc);
     updatePatientDemo(bbDoc);
+    populateEncounters(bbDoc);
+    populateMedication(bbDoc);
+
+    register_trigger();
 }
 
 function updateHeaders(bbDoc) {
