@@ -26,7 +26,9 @@ var options = {
   padding: 5,
   margin: {
     item: 8
-  }
+  },
+  start: '2005',
+  end: '2015'
 };
 
 
@@ -35,7 +37,7 @@ timeline.on('select', function (properties) {
     var id = properties.items[0];
     var data = findData(id);
     var id_tag = "#" + data["id"] + "_widget";
-    if (!($(id_tag).length)) {
+        if (!($(id_tag).length)) {
         draw_widget(data);
     }
 });
