@@ -251,20 +251,19 @@ a {
     position:relative;
     display: inline-block;
     width:15%;
-    margin-left: 5px;
-    margin-right: 5px;
     border:solid black;
     border-radius:6px;
     height: 100%;
     background-color: #ff4a4f;
 }
 
-.tab > .header {
+.tab>.header {
     width:80%;
     overflow-y: hidden;
     overflow-x: hidden;
     text-align:center;
     height:95%;
+    white-space:nowrap;
 }
 
 .tab_remove {

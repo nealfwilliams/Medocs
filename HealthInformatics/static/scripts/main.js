@@ -349,13 +349,22 @@ var register_trigger = function(){
     });
 };
 
-var pretty_name = function(node){
+var pretty_name = function(node) {
+
     if (node["name"]){
-        return node["name"];
+     return node["name"];
     }
+
+    else if (node["product"]) {
+        if (node["product"]["name"]) {
+            return node["product"]["name"];
+        }
+    }
+
     else if (node["text"]){
         return(node["text"]);
     }
+
     else {
         return false;
     }
@@ -405,7 +414,7 @@ var remove_all_widgets = function(){
 
 var resize_tabs = function() {
     if (num_tabs > 4) {
-            tabwidth = String(75 / num_tabs) + "%";
+            tabwidth = String(80/ num_tabs) + "%";
             headerwidth = String(70 - num_tabs) + "%";
             $(".tab").css("width", tabwidth);
             $(".tab>.header").css("width", headerwidth);
@@ -481,6 +490,9 @@ var draw_widget = function(data) {
 
         $(".clipboard_widget").draggable({ containment: "parent", stack: ".clipboard_widget" });
         $(".clipboard_widget").resizable();
+    }
+    else {
+        alert("Please Close Some Widgets Before Creating More!");
     }
 };
 
