@@ -477,7 +477,7 @@ function populateTable()  {
         "<td>" + $.trim(row["group"]) + "</td>" +
         "<td>" + $.trim(row["content"]) + "</td>" +
         "</tr>";
-    $('#patient_table tr:last').after(html);
+    $('#patient_table_body').append(html);
     }
 }
 //register_trigger();
@@ -811,6 +811,7 @@ function updatePatient(bbDoc) {
     populateTable();
 
     register_trigger();
+    $("#patient_table").tablesorter();
 }
 
 function updateHeaders(bbDoc) {
