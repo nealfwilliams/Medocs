@@ -491,6 +491,9 @@ var space_to_underscore = function(my_string){
 };
 
 function populateTable()  {
+    //Clear table
+    $('#patient_table_body').html("");
+
     var table_data = test_items.get();
     for (index in table_data) {
         var row = table_data[index];
