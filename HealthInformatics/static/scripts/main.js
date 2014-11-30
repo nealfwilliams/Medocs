@@ -31,6 +31,14 @@ var options = {
 
 
 var timeline = new vis.Timeline(tl_container, test_items, options);
+timeline.on('select', function (properties) {
+    var id = properties.items[0];
+    var data = findData(id);
+    var id_tag = "#" + data["id"] + "_widget";
+    if (!($(id_tag).length)) {
+        draw_widget(data);
+    }
+});
 
 var menu_toggle = function(){
     var out = false;
@@ -729,7 +737,7 @@ function populateResultsLab(bbDoc) {
 
                 // Add individual lab report to timeline
                 var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(test_record.date));
-                test_items.add({id: "lab-result-" + i + "-" + j, content: record.name + " " + test_record.value, group: 'Lab Results', start: timeline_date});
+                test_items.add({id: "lab-" + i + "-" + j, content: record.name + " " + test_record.value, group: 'Lab Results', start: timeline_date});
             });
 
         lab_record_str += "</p>";
