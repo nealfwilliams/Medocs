@@ -350,14 +350,34 @@ var register_trigger = function(){
     });
 };
 
-var findData = function(id){
-    data = {"id": id, "name":"Record Details of " + id };
-    return data;
+var pretty_name = function(node){
+    if (node["name"]){
+        return node["name"];
+    }
+    else if (node["text"]){
+        return(node["text"]);
+    }
+    else {
+        return false;
+    }
 };
 
-var draw_tab = function(id) {
+var findData = function(id){
+    var data = $("#" + id).data("json-record");
+    var name;
+    if (pretty_name(data)) {
+        name = pretty_name(data);
+    }
+    else {
+        name = id;
+    }
+    var return_data = {"id": id, "name":name };
+    return return_data;
+};
+
+var draw_tab = function(id, name) {
     var html = "<div class='tab' id='" + id + "_tab'>" +
-        "<div class='header'>" + id +
+        "<div class='header'>" + name +
         "</div><span class='glyphicon glyphicon-remove tab_remove' " + "name='" + id + "'></span></div>";
     if (num_tabs < 10) {
         num_tabs = num_tabs + 1;
@@ -384,6 +404,8 @@ var resize_tabs = function() {
             $(".tab>.header").css("width", headerwidth);
         }
 };
+
+
 
 var check_nullity = function(node){
     if (!(node)) {
@@ -425,6 +447,7 @@ var draw_widget = function(data) {
     // quick fix is to recursively iterate through json and print out leaf values
 
     var id = data["id"];
+    var name = data["name"];
     var html = "<div class='textbox clipboard_widget' id= '" + id + "_widget'>" + "\
         <div class='header'> \
         <h3> " + data["name"] + "</h3></div> \
@@ -440,7 +463,7 @@ var draw_widget = function(data) {
 
     html = html + "</div></div>";
 
-    draw_tab(id);
+    draw_tab(id, name);
     $("#default_text").hide();
     $("#clipboard").prepend(html);
 
@@ -606,7 +629,7 @@ function populateCarePlan(bbDoc) {
 
 function populateEncounters(bbDoc) {
     // Each encounter record has an id of 'encounter-X', also the full
-    // json record is attached via jquery.data for easy access in clipboard
+    // json record is attached via jquery.data/ for easy access in clipboard
 
     var $encounters_data = $('#encounters-data');
     var encountersData = bbDoc.data.encounters;
@@ -674,7 +697,6 @@ function populateDelImmunizationStatus(bbDoc) {
         test_items.add({id: "declined-immunization-" + i, content: "Declined Immunization:" + record.product.name, group: 'Declined Immunizations', start: timeline_date});
     });
 }
-
 
 function populateMedication(bbDoc) {
     var $medication_data = $('#medication-data');
@@ -841,4 +863,3 @@ var selectedPatient = "Marla";
 $( document ).ready(function() {
     readCcd("MarlaCCD.xml");
 });
-
