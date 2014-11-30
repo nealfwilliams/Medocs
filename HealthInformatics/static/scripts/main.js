@@ -768,7 +768,7 @@ function populateProcedures(bbDoc) {
     });
 }
 
-function populateResultsLab(bbDoc) {
+function populateLabResults(bbDoc) {
     var $lab_data = $('#lab-data');
     $lab_data.html("");
     var labData = bbDoc.data.results;
@@ -840,9 +840,9 @@ function updatePatient(bbDoc) {
     populateImmunizationStatus(bbDoc);
     populateDelImmunizationStatus(bbDoc);
     populateMedication(bbDoc);
+    populateLabResults(bbDoc);
     populateProblems(bbDoc);
     populateProcedures(bbDoc);
-    populateResultsLab(bbDoc);
     populateVitals(bbDoc);
 
     populateTable();
