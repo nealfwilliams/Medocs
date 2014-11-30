@@ -568,7 +568,6 @@ function populateCarePlan(bbDoc) {
 }
 
 
-
 function populateEncounters(bbDoc) {
     // Each encounter record has an id of 'encounter-X', also the full
     // json record is attached via jquery.data for easy access in clipboard
