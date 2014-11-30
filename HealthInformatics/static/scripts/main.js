@@ -471,8 +471,8 @@ function populateTable()  {
     var table_data = test_items.get();
     for (index in table_data) {
         var row = table_data[index];
-        html = "<tr>" +
-        "<td>" + row["start"] + "</td>" +
+        html = "<tr id='" + row['id'] + "' class='clipboard_trigger'>" +
+        "<td>" + $.trim(row["start"]) + "</td>" +
         "<td>" + $.trim(row["end"]) + "</td>" +
         "<td>" + $.trim(row["group"]) + "</td>" +
         "<td>" + $.trim(row["content"]) + "</td>" +
@@ -480,7 +480,7 @@ function populateTable()  {
     $('#patient_table tr:last').after(html);
     }
 }
-register_trigger();
+//register_trigger();
 
 function updateDemographics(bbDoc) {
     var $patient_info = $('#patient_info');
