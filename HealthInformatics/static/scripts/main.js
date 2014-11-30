@@ -572,13 +572,13 @@ function updatePatientDemo(bbDoc) {
                         '<div class="widget_content">' +
                             '<p>Age: ' + age + '</p>' +
                             '<p>Sex: ' + bbDoc.data.demographics.gender + '</p>' +
-                            '<p>Primary Language: ' + bbDoc.data.demographics.language + '</p>' +
-                            '<p>Race: ' + bbDoc.data.demographics.race + '</p>' +
+                            '<p>Primary Language: ' + $.trim(bbDoc.data.demographics.language) + '</p>' +
+                            '<p>Race: ' + $.trim(bbDoc.data.demographics.race) + '</p>' +
                             '<p><b>Contact Info:' + '</p>' +
-                            '<p>Home Phone: ' + bbDoc.data.demographics.phone.home + '</p>' +
-                            '<p>Work Phone: ' + bbDoc.data.demographics.phone.work + '</p>' +
-                            '<p>Mobile Phone: ' + bbDoc.data.demographics.phone.mobile + '</p>' +
-                            '</p>Email: ' + bbDoc.data.demographics.email + '</p>' +
+                            '<p>Home Phone: ' + $.trim(bbDoc.data.demographics.phone.home) + '</p>' +
+                            '<p>Work Phone: ' + $.trim(bbDoc.data.demographics.phone.work) + '</p>' +
+                            '<p>Mobile Phone: ' + $.trim(bbDoc.data.demographics.phone.mobile) + '</p>' +
+                            '</p>Email: ' + $.trim(bbDoc.data.demographics.email) + '</p>' +
                         '</div>' +
                     '</div>';
     $custodian_info.replaceWith($custodian_details);
@@ -586,6 +586,7 @@ function updatePatientDemo(bbDoc) {
 
 function populateAllergies(bbDoc) {
     var $allergies_data = $('#allergies-data');
+    $allergies_data.html("");
     var allergiesData = bbDoc.data.allergies;
     $.each(allergiesData, function(i, record) {
         var $allergy_record = $("<p class='clipboard_trigger' id='allergy-" + i + "'>Date Range:" +
@@ -606,6 +607,7 @@ function populateAllergies(bbDoc) {
 
 function populateCarePlan(bbDoc) {
     var $care_plan_data = $('#care-plan-data');
+    $care_plan_data.html("");
     var carePlanData = bbDoc.data.care_plan;
     $.each(carePlanData, function(i, record) {
 
@@ -632,6 +634,8 @@ function populateEncounters(bbDoc) {
     // json record is attached via jquery.data/ for easy access in clipboard
 
     var $encounters_data = $('#encounters-data');
+    //clear
+    $encounters_data.html("");
     var encountersData = bbDoc.data.encounters;
     $.each(encountersData, function(i, record) {
         var $encounter_record = $("<p class='clipboard_trigger' id='encounter-" + i + "'>Date:" +
@@ -649,6 +653,7 @@ function populateEncounters(bbDoc) {
 
 function populateFunctionalStatus(bbDoc) {
     var $func_stat_data = $('#functional-status-data');
+    $func_stat_data.html("");
     var funcStatData = bbDoc.data.functional_statuses;
     $.each(funcStatData, function(i, record) {
         var $func_stat_record = $("<p class='clipboard_trigger' id='functional-status-" + i + "'>Date:" +
@@ -666,6 +671,7 @@ function populateFunctionalStatus(bbDoc) {
 
 function populateImmunizationStatus(bbDoc) {
     var $immune_data = $('#immunizations-data');
+    $immune_data.html("");
     var immuneData = bbDoc.data.immunizations;
     $.each(immuneData, function(i, record) {
         var $immune_record = $("<p class='clipboard_trigger' id='immunization-" + i + "'>Date:" +
@@ -683,6 +689,7 @@ function populateImmunizationStatus(bbDoc) {
 
 function populateDelImmunizationStatus(bbDoc) {
     var $immune_data = $('#declined-immunizations-data');
+    $immune_data.html("");
     var immuneData = bbDoc.data.immunization_declines;
     $.each(immuneData, function(i, record) {
         var $immune_record = $("<p class='clipboard_trigger' id='declined-immunization-" + i + "'>Date:" +
@@ -700,6 +707,7 @@ function populateDelImmunizationStatus(bbDoc) {
 
 function populateMedication(bbDoc) {
     var $medication_data = $('#medication-data');
+    $medication_data.html("");
     var medicationData = bbDoc.data.medications;
     $.each(medicationData, function(i, record) {
         var $medication_record = $("<p class='clipboard_trigger' id='medication-" + i + "'>Date Range:" +
@@ -720,6 +728,7 @@ function populateMedication(bbDoc) {
 
 function populateProblems(bbDoc) {
     var $problems_data = $('#problems-data');
+    $problems_data.html("");
     var problemsData = bbDoc.data.problems;
     $.each(problemsData, function(i, record) {
         var $problem_record = $("<p class='clipboard_trigger' id='problem-" + i + "'>Date Range:" +
@@ -740,6 +749,7 @@ function populateProblems(bbDoc) {
 
 function populateProcedures(bbDoc) {
     var $procedure_data = $('#procedure-data');
+    $procedure_data.html("");
     var procData = bbDoc.data.procedures;
     $.each(procData, function(i, record) {
         var $proc_record = $("<p class='clipboard_trigger' id='procedure-" + i + "'>Date:" +
@@ -757,6 +767,7 @@ function populateProcedures(bbDoc) {
 
 function populateResultsLab(bbDoc) {
     var $lab_data = $('#lab-data');
+    $lab_data.html("");
     var labData = bbDoc.data.results;
     $.each(labData, function(i, record) {
         var lab_record_str = "<p class='clipboard_trigger' id='lab-" + i + "'>Lab Work:" +
@@ -780,6 +791,7 @@ function populateResultsLab(bbDoc) {
 
 function populateVitals(bbDoc) {
     var $vitals_data = $('#vitals-data');
+    $vitals_data.html("");
     var vitalsData = bbDoc.data.vitals;
     $.each(vitalsData, function(i, record) {
         var vitals_record_str = "<p class='clipboard_trigger' id='vitals-" + i + "'>Measurements :";
