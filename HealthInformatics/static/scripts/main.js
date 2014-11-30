@@ -839,8 +839,8 @@ function updatePatient(bbDoc) {
     populateFunctionalStatus(bbDoc);
     populateImmunizationStatus(bbDoc);
     populateDelImmunizationStatus(bbDoc);
-    populateMedication(bbDoc);
     populateLabResults(bbDoc);
+    populateMedication(bbDoc);
     populateProblems(bbDoc);
     populateProcedures(bbDoc);
     populateVitals(bbDoc);
