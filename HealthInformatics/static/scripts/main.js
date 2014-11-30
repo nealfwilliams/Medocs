@@ -710,7 +710,7 @@ function populateResultsLab(bbDoc) {
 
                 // Add individual lab report to timeline
                 var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(test_record.date));
-                test_items.add({id: "lab-result-" + j, content: record.name + " " + test_record.value, group: 'Lab Results', start: timeline_date});
+                //test_items.add({id: "lab-result-" + j, content: record.name + " " + test_record.value, group: 'Lab Results', start: timeline_date});
             });
 
         lab_record_str += "</p>";
