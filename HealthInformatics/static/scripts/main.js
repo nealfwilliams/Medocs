@@ -332,7 +332,7 @@ var draw_tab = function(id) {
     if (num_tabs < 10) {
         num_tabs = num_tabs + 1;
         if (num_tabs > 4) {
-            tabwidth = str(80 / num_tabs) + "%";
+            tabwidth = String(80 / num_tabs) + "%";
             $(".tab").css("width", tabwidth);
         }
         $("#clipboard_toolbar").append(html);
@@ -341,6 +341,7 @@ var draw_tab = function(id) {
             console.log("close fired");
             var name = $(this).attr("name");
             console.log(name);
+            num_tabs = num_tabs - 1;
             remove_widget(name);
         });
     }
