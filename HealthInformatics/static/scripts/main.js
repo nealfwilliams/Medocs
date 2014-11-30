@@ -395,6 +395,17 @@ var draw_tab = function(id, name) {
         });
     }
 };
+var remove_all_widgets = function(){
+    console.log("remove called");
+    $(".tab").each(function(){
+        $(this).remove()
+    });
+    $(".clipboard_widget").each(function(){
+        $(this).remove()
+    });
+    num_tabs = 0;
+    resize_tabs();
+};
 
 var resize_tabs = function() {
     if (num_tabs > 4) {
@@ -813,7 +824,7 @@ function readCcd(xmlFilename) {
 
 function updatePatient(bbDoc) {
     test_items.clear();
-
+    remove_all_widgets();
     updateHeaders(bbDoc);
     updateDemographics(bbDoc);
     updateAuthor(bbDoc);

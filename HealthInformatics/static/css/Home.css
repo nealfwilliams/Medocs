@@ -60,6 +60,9 @@
     overflow-x:hidden;
 }
 
+.clipboard_trigger {
+    cursor: pointer;
+}
 #content_manager {
     position: absolute;
     color:black;
