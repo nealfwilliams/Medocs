@@ -8,13 +8,9 @@ var test_items = new vis.DataSet([
 // Sample data, this is now populated via JSON
 /*
     {id: 1, content: 'Lasix 40mg', group: 'Medications', start: '2011-04-23'},
-    {id: 2, content: 'Annual Physical Exam', group: 'Encounters', start: '2011-04-23'},
-    {id: 3, content: 'bbbbbbbbbb', group: 'Encounters', start: '2011-04-24'},
     {id: 4, content: 'cccccccccc', group: 'Encounters', start: '2013-04-25'},
     {id: 5, content: 'item 3', start: '2013-04-18'},
     {id: 6, content: 'item 4', start: '2013-04-16', end: '2013-04-19'},
-    {id: 7, content: 'item 5', start: '2013-04-25'},
-    {id: 8, content: 'item 6', start: '2013-04-27'}
 */
 
 
@@ -36,7 +32,15 @@ var timeline = new vis.Timeline(tl_container, test_items, options);
 timeline.on('select', function (properties) {
     var id = properties.items[0];
     var data = findData(id);
-    var id_tag = "#" + data["id"] + "_widget";
+    var id_widget = data["id"];
+    if(id.match("^vitals") || id.match("^lab") ) {
+        //Vitals and Lab have multiple entries so to map to proper id
+        // we have to remove last 2 chars (ie lab-1-2 becomes lab-1 which
+        // matches the element id to lookup for data)
+        id_widget = id.slice(0,-2);
+        data["id"] = id_widget;
+    }
+    var id_tag = "#" + id_widget + "_widget";
         if (!($(id_tag).length)) {
         draw_widget(data);
     }
@@ -206,12 +210,10 @@ groups = [
   {
     id: "Lab Results",
     content: 'Lab Results'
-    // Optional: a field 'className', 'style'
   },
   {
     id: "Vitals",
     content: 'Vitals'
-    // Optional: a field 'className', 'style'
   }
 ];
 var selected = [];
@@ -570,7 +572,7 @@ function populateAllergies(bbDoc) {
            // Add formatted record to timeline data
         var timeline_start = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.start));
         var timeline_end = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.end));
-        test_items.add({id: "allergy-" + i, content: record.text, group: 'Allergies', start: timeline_start, end: timeline_end});
+        test_items.add({id: "allergy-" + i, content: "Allergen: " + record.allergen.name, group: 'Allergies', start: timeline_start, end: timeline_end});
     });
 }
 
@@ -647,7 +649,7 @@ function populateImmunizationStatus(bbDoc) {
 
             // Add formatted record to timeline data
         var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(record.date));
-        test_items.add({id: "immunization-" + i, content: record.name, group: 'Immunization', start: timeline_date});
+        test_items.add({id: "immunization-" + i, content: "Immunization:" + record.product.name, group: 'Immunization', start: timeline_date});
     });
 }
 
@@ -664,7 +666,7 @@ function populateDelImmunizationStatus(bbDoc) {
 
             // Add formatted record to timeline data
         var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(record.date));
-        test_items.add({id: "declined-immunization-" + i, content: record.name, group: 'Declined Immunizations', start: timeline_date});
+        test_items.add({id: "declined-immunization-" + i, content: "Declined Immunization:" + record.product.name, group: 'Declined Immunizations', start: timeline_date});
     });
 }
 
@@ -705,7 +707,7 @@ function populateProblems(bbDoc) {
     // Add formatted record to timeline data
         var timeline_start = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.start));
         var timeline_end = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.end));
-        test_items.add({id: "problem-" + i, content: record.text, group: 'Problems', start: timeline_start, end: timeline_end});
+        test_items.add({id: "problem-" + i, content: record.name, group: 'Problems', start: timeline_start, end: timeline_end});
     });
 }
 
