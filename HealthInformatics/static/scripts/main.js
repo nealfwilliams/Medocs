@@ -467,22 +467,19 @@ var space_to_underscore = function(my_string){
     return my_string.split(" ").join("_");
 };
 
-for (index in full_table){
-    var row = full_table[index];
-    console.log(row);
-    html = "<tr>" +
-        "<td id='" + row["date1"] + "'>" + row["date1"] + "</td>" +
-        "<td id='" + row["date2"] + "'>" + row["date2"] + "</td>" +
-        "<td class='clipboard_trigger' id='" + space_to_underscore(row["medication"]) + "'>" + row["medication"] + "</td>" +
-        "<td class='clipboard_trigger' id='" + space_to_underscore(row["procedure"]) + "'>" + row["procedure"] + "</td>" +
-        "<td class='clipboard_trigger' id='" + space_to_underscore(row["encounter"]) + "'>" + row["encounter"] + "</td>" +
-        "<td class='clipboard_trigger' id='" + space_to_underscore(row["problem"]) + "'>" + row["problem"] + "</td>" +
-        "<td class='clipboard_trigger' id='" + space_to_underscore(row["results"]) + "'>" + row["results"] + "</td>" +
-        "<td class='clipboard_trigger' id='" + space_to_underscore(row["social history"]) + "'>" + row["social history"] + "</td>" +
+function populateTable()  {
+    var table_data = test_items.get();
+    for (index in table_data) {
+        var row = table_data[index];
+        html = "<tr>" +
+        "<td>" + row["start"] + "</td>" +
+        "<td>" + $.trim(row["end"]) + "</td>" +
+        "<td>" + $.trim(row["group"]) + "</td>" +
+        "<td>" + $.trim(row["content"]) + "</td>" +
         "</tr>";
-    console.log(html);
     $('#patient_table tr:last').after(html);
-};
+    }
+}
 register_trigger();
 
 function updateDemographics(bbDoc) {
@@ -810,6 +807,8 @@ function updatePatient(bbDoc) {
     populateProcedures(bbDoc);
     populateResultsLab(bbDoc);
     populateVitals(bbDoc);
+
+    populateTable();
 
     register_trigger();
 }
