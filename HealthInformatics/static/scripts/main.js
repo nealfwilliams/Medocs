@@ -31,6 +31,14 @@ var options = {
 
 
 var timeline = new vis.Timeline(tl_container, test_items, options);
+timeline.on('select', function (properties) {
+    var id = properties.items[0];
+    var data = findData(id);
+    var id_tag = "#" + data["id"] + "_widget";
+    if (!($(id_tag).length)) {
+        draw_widget(data);
+    }
+});
 
 var menu_toggle = function(){
     var out = false;
@@ -159,6 +167,10 @@ $(".nav_item").click(function(){
 });
 
 groups = [
+   {
+     id: "Allergies",
+     content: "Allergies"
+   },
   {
     id: "Medications",
     content: 'Medications'
@@ -170,9 +182,24 @@ groups = [
     // Optional: a field 'className', 'style'
   },
   {
-    id: "Conditions",
-    content: 'Conditions'
-    // Optional: a field 'className', 'style'
+    id: "Functional Status",
+    content: "Functional Status"
+  },
+  {
+    id: "Immunization",
+    content: "Immunization"
+  },
+  {
+    id: "Declined Immunizations",
+    content: "Declined Immunizations"
+  },
+  {
+    id: "Problems",
+    content: "Problems"
+  },
+  {
+    id: "Procedures",
+    content: "Procedures"
   },
   {
     id: "Lab Results",
@@ -180,13 +207,8 @@ groups = [
     // Optional: a field 'className', 'style'
   },
   {
-    id: "Social History",
-    content: 'Social History'
-    // Optional: a field 'className', 'style'
-  },
-  {
-    id: "Procedures",
-    content: 'Procedures'
+    id: "Vitals",
+    content: 'Vitals'
     // Optional: a field 'className', 'style'
   }
 ];
@@ -210,8 +232,12 @@ $(".check_items").change(function(){
     select_groups();
     timeline.clear(groups);
     timeline.setGroups(selected_groups);
-    drawTable(selected_groups);
+    drawTable();
 });
+
+function drawTable() {
+
+}
 
 timeline.setGroups(selected_groups);
 $("#profile").trigger("cm_toggle");
@@ -711,7 +737,7 @@ function populateResultsLab(bbDoc) {
 
                 // Add individual lab report to timeline
                 var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(test_record.date));
-                //test_items.add({id: "lab-result-" + j, content: record.name + " " + test_record.value, group: 'Lab Results', start: timeline_date});
+                test_items.add({id: "lab-" + i + "-" + j, content: record.name + " " + test_record.value, group: 'Lab Results', start: timeline_date});
             });
 
         lab_record_str += "</p>";
@@ -733,7 +759,7 @@ function populateVitals(bbDoc) {
 
             // Add individual vitals measurement to timeline
             var timeline_date = $.datepicker.formatDate('yy-mm-dd', new Date(record.date));
-            //test_items.add({id: "vitals-" + j, content: test_record.name + " " + test_record.value + " " + test_record.unit, group: 'Vitals Measurement', start: timeline_date});
+            test_items.add({id: "vitals-" + i + "-" + j, content: test_record.name + " " + test_record.value + " " + test_record.unit, group: 'Vitals Measurement', start: timeline_date});
         });
 
         vitals_record_str += "</p>";
