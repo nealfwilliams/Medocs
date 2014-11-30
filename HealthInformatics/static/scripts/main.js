@@ -717,7 +717,7 @@ function populateMedication(bbDoc) {
             $.datepicker.formatDate('MM dd, yy', new Date(record.date_range.start)) +
             " to " +
             $.datepicker.formatDate('MM dd, yy', new Date(record.date_range.end)) +
-            "  -  " + record.text +
+            "  -  " + record.product.name +
             "</p>");
         $medication_record.data("json-record", record);
         $medication_data.append($medication_record);
@@ -725,7 +725,7 @@ function populateMedication(bbDoc) {
     // Add formatted record to timeline data
         var timeline_start = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.start));
         var timeline_end = $.datepicker.formatDate('yy-mm-dd', new Date(record.date_range.end));
-        test_items.add({id: "medication-" + i, content: record.text, group: 'Medications', start: timeline_start, end: timeline_end});
+        test_items.add({id: "medication-" + i, content: record.product.name, group: 'Medications', start: timeline_start, end: timeline_end});
     });
 }
 
