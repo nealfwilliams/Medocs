@@ -1,6 +1,6 @@
 ﻿h3{
     margin-top:0px;
-    margin-bottom:10px;
+    margin-bottom:5px;
 }
 
 .left_nav{
@@ -179,8 +179,7 @@ a {
 
 .textbox {
     color: black;
-    min-width: 250px;
-    height: 300px;
+
     overflow-y:auto;
     overflow-x:hidden;
     background-color: rgba(255, 255, 255, 0.90);
@@ -190,11 +189,13 @@ a {
     margin: 20px;
     box-shadow: 0px 2px 5px #191919;
 }
+
 #patient-select{
     display:inline-block;
     width:38%;
     padding: 3px;
 }
+
 #download-ccd-button{
     padding:6px;
     padding-left:3px;
@@ -206,8 +207,6 @@ a {
 .cm_textbox {
     background-color: #d7e2ff;
 }
-
-
 
 .textbox>.header {
     background-color: #a169ca;
@@ -240,6 +239,7 @@ a {
 }
 
 .tab {
+    position:relative;
     display: inline-block;
     width:15%;
     margin-left: 5px;
@@ -250,8 +250,17 @@ a {
     background-color: #ff4a4f;
 }
 
-.tab > header {
+.tab > .header {
     width:80%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    text-align:center;
+    height:95%;
+}
+
+.tab_remove {
+    position:absolute;
+    right:10px;
 }
 #label_block {
     display:inline-block;
@@ -263,6 +272,8 @@ a {
 
 .clipboard_widget{
     display:inline-block;
+    width: 300px;
+    height: 250px;
 }
 .header {
     text-align: center;
@@ -289,7 +300,9 @@ td, th {
     padding:10px;
 
 }
-
+.check-label{
+    font-size: 13px;
+}
 #bottom_image{
     position:absolute;
     width:100%;

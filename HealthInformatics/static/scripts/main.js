@@ -357,11 +357,9 @@ var draw_tab = function(id) {
         "</div><span class='glyphicon glyphicon-remove tab_remove' " + "name='" + id + "'></span></div>";
     if (num_tabs < 10) {
         num_tabs = num_tabs + 1;
-        if (num_tabs > 4) {
-            tabwidth = String(80 / num_tabs) + "%";
-            $(".tab").css("width", tabwidth);
-        }
+
         $("#clipboard_toolbar").append(html);
+        resize_tabs();
         $(".tab_remove").unbind();
         $(".tab_remove").click(function () {
             console.log("close fired");
@@ -369,8 +367,18 @@ var draw_tab = function(id) {
             console.log(name);
             num_tabs = num_tabs - 1;
             remove_widget(name);
+            resize_tabs();
         });
     }
+};
+
+var resize_tabs = function() {
+    if (num_tabs > 4) {
+            tabwidth = String(75 / num_tabs) + "%";
+            headerwidth = String(70 - num_tabs) + "%";
+            $(".tab").css("width", tabwidth);
+            $(".tab>.header").css("width", headerwidth);
+        }
 };
 
 var check_nullity = function(node){
