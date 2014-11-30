@@ -42,6 +42,7 @@
     position:relative;
     left:10px;
     width:100%;
+    z-index:100;
 }
 
 #visualization {
@@ -53,9 +54,9 @@
 #clipboard {
     position: absolute;
     background-color: #969696;
-    top: 55%;
+    top: 100%;
     width:100%;
-    height: 45%;
+    height: 0%;
     overflow-y: auto;
     overflow-x:hidden;
 }
@@ -63,12 +64,17 @@
 .clipboard_trigger {
     cursor: pointer;
 }
+
+.nav_content {
+    cursor: pointer;
+}
+
 #content_manager {
     position: absolute;
     color:black;
     text-align: center;
     background-color: #ffffff;
-    height:50%;
+    height:95%;
     width:100%;
     overflow-y: auto;
     overflow-x: hidden;
@@ -78,7 +84,7 @@
     position: absolute;
     width: 100%;
     height:5%;
-    top:50%;
+    top:95%;
     background-color:black;
     color:white;
 }

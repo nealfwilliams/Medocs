@@ -79,7 +79,7 @@ var menu_toggle = function(){
     }, 1000);
 };
 
-var clipboard_position = 1;
+var clipboard_position = 0;
 
 var clipboard_resize = function(amt1, amt2) {
 
@@ -161,14 +161,13 @@ $(".cm_widget").on("cm_toggle", function()  {
     });
 });
 
-$(".nav_item").click(function(){
-    var content = $(this).children(".nav_content");
+$(".nav_content").click(function(){
     var item_id = $(this).attr("id");
     console.log(item_id);
     item_id = "#" + item_id.substring(0, item_id.length - 4);
     console.log(item_id);
     $(item_id).trigger("cm_toggle");
-    content.trigger("nav_toggle");
+    $(this).trigger("nav_toggle");
 
 });
 
@@ -379,11 +378,9 @@ var draw_tab = function(id, name) {
     var html = "<div class='tab' id='" + id + "_tab'>" +
         "<div class='header'>" + name +
         "</div><span class='glyphicon glyphicon-remove tab_remove' " + "name='" + id + "'></span></div>";
-    if (num_tabs < 10) {
-        num_tabs = num_tabs + 1;
 
         $("#clipboard_toolbar").append(html);
-        resize_tabs();
+
         $(".tab_remove").unbind();
         $(".tab_remove").click(function () {
             console.log("close fired");
@@ -393,7 +390,6 @@ var draw_tab = function(id, name) {
             remove_widget(name);
             resize_tabs();
         });
-    }
 };
 var remove_all_widgets = function(){
     console.log("remove called");
@@ -456,30 +452,36 @@ var render_node = function(key, node){
 var draw_widget = function(data) {
     // This needs to be cleaned up,
     // quick fix is to recursively iterate through json and print out leaf values
+    if (num_tabs < 10) {
+        if ((num_tabs == 0) && (clipboard_position == 0)){
+            $("#clipboard_slider_up").click();
 
-    var id = data["id"];
-    var name = data["name"];
-    var html = "<div class='textbox clipboard_widget' id= '" + id + "_widget'>" + "\
-        <div class='header'> \
-        <h3> " + data["name"] + "</h3></div> \
-        <div class='widget_content'>";
-
-    var $source_widget = $('#' + id);
-    var $json_data = $source_widget.data("json-record");
-    $.each($json_data, function(key, value) {
-        if(value) {
-            html = html +  render_node(key, value);
         }
-    });
+        num_tabs = num_tabs + 1;
+        var id = data["id"];
+        var name = data["name"];
+        var html = "<div class='textbox clipboard_widget' id= '" + id + "_widget'>" + "\
+            <div class='header'> \
+            <h3> " + data["name"] + "</h3></div> \
+            <div class='widget_content'>";
 
-    html = html + "</div></div>";
+        var $source_widget = $('#' + id);
+        var $json_data = $source_widget.data("json-record");
+        $.each($json_data, function (key, value) {
+            if (value) {
+                html = html + render_node(key, value);
+            }
+        });
 
-    draw_tab(id, name);
-    $("#default_text").hide();
-    $("#clipboard").prepend(html);
+        html = html + "</div></div>";
+        draw_tab(id, name);
+        resize_tabs();
+        $("#default_text").hide();
+        $("#clipboard").prepend(html);
 
-    $(".clipboard_widget").draggable({ containment: "parent", stack: ".clipboard_widget" });
-    $(".clipboard_widget").resizable();
+        $(".clipboard_widget").draggable({ containment: "parent", stack: ".clipboard_widget" });
+        $(".clipboard_widget").resizable();
+    }
 };
 
 var remove_widget = function(name) {
