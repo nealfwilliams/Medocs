@@ -192,19 +192,22 @@ a {
 }
 #patient-select{
     display:inline-block;
-    width:40%;
-    padding: 4px;
+    width:38%;
+    padding: 3px;
 }
 #download-ccd-button{
     padding:6px;
-    padding-left:4px;
-    padding-right:4px;
+    padding-left:3px;
+    padding-right:3px;
     display:inline-block;
-    width:33%;
+    width:32%;
 }
+
 .cm_textbox {
     background-color: #d7e2ff;
 }
+
+
 
 .textbox>.header {
     background-color: #a169ca;
@@ -247,6 +250,9 @@ a {
     background-color: #ff4a4f;
 }
 
+.tab > header {
+    width:80%;
+}
 #label_block {
     display:inline-block;
     position:absolute;

@@ -328,7 +328,7 @@ var findData = function(id){
 var draw_tab = function(id) {
     var html = "<div class='tab' id='" + id + "_tab'>" +
         "<div class='header'>" + id +
-        "<span class='glyphicon glyphicon-remove tab_remove' " + "name='" + id + "'></span></div></div>";
+        "</div><span class='glyphicon glyphicon-remove tab_remove' " + "name='" + id + "'></span></div>";
     if (num_tabs < 10) {
         num_tabs = num_tabs + 1;
         if (num_tabs > 4) {
