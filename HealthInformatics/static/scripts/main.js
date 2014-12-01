@@ -245,99 +245,6 @@ function drawTable() {
 timeline.setGroups(selected_groups);
 $("#profile").trigger("cm_toggle");
 
-var full_table = [
-    {
-        "date1": "01-01-1984",
-        "date2": "01-01-2014",
-        "encounter": "",
-        "medication": "",
-        "problem": "",
-        "procedure": "",
-        "results": "",
-        "social history": "Former Smoker"
-    },
-    {
-        "date1": "04-23-11",
-        "date2": "",
-        "encounter": "Annual Physical Exam",
-        "medication": "Lasix 40mg",
-        "problem": "",
-        "procedure": "",
-        "results": "Lab Results",
-        "social history": ""
-    },
-    {
-        "date1": "04-23-11",
-        "date2": "",
-        "encounter": "",
-        "medication": "Propranolol Extended Release 60 mg",
-        "problem": "",
-        "procedure": "",
-        "results": "",
-        "social history": ""
-    },
-    {
-        "date1": "04-24-11",
-        "date2": "",
-        "encounter": "Annual Physical Exam",
-        "medication": "",
-        "problem": "",
-        "procedure": "",
-        "results": "",
-        "social history": ""
-    },
-    {
-        "date1": "04-25-11",
-        "date2": "",
-        "encounter": "Annual Physical Exam",
-        "medication": "",
-        "problem": "",
-        "procedure": "",
-        "results": "",
-        "social history": ""
-    },
-    {
-        "date1": "N/A",
-        "date2": "",
-        "encounter": "",
-        "medication": "",
-        "problem": "Diabetes Mellitus",
-        "procedure": "",
-        "results": "",
-        "social history": ""
-    },
-    {
-        "date1": "N/A",
-        "date2": "",
-        "encounter": "",
-        "medication": "",
-        "problem": "Essential Hyptertension",
-        "procedure": "",
-        "results": "",
-        "social history": ""
-    },
-    {
-        "date1": "N/A",
-        "date2": "",
-        "encounter": "",
-        "medication": "",
-        "problem": "Simple chronic bronchitis",
-        "procedure": "",
-        "results": "",
-        "social history": ""
-    },
-    {
-        "date1": "N/A",
-        "date2": "",
-        "encounter": "",
-        "medication": "",
-        "problem": "Coronary artery disease",
-        "procedure": "",
-        "results": "",
-        "social history": ""
-    }
-];
-
 var register_trigger = function(){
     $(".clipboard_trigger").click(function(){
         var id = $(this).attr("id");
@@ -522,6 +429,17 @@ function populateTable()  {
     var table_data = test_items.get();
     for (index in table_data) {
         var row = table_data[index];
+
+        //Total hack to get click-handler to work
+        id = row['id'];
+        if(id.match("^vitals") || id.match("^lab") ) {
+            //Vitals and Lab have multiple entries so to map to proper id
+            // we have to remove last 2 chars (ie lab-1-2 becomes lab-1 which
+            // matches the element id to lookup for data)
+            id_widget = id.slice(0,-2);
+            row["id"] = id_widget;
+        }
+
         html = "<tr id='" + row['id'] + "' class='clipboard_trigger'>" +
         "<td>" + $.trim(row["start"]) + "</td>" +
         "<td>" + $.trim(row["end"]) + "</td>" +

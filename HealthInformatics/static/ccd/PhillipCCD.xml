@@ -27,10 +27,9 @@
 <patient>
 <name use="L">
 <given qualifier="CL">Phillip</given>
-<given>R</given>
 <family>Jones</family>
 </name>
-<administrativeGenderCode code="UN" displayName="UNKNOWN" codeSystem="2.16.840.1.113883.5.1" codeSystemName="HL7 AdministrativeGender" />
+<administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1"/>
 <birthTime value="19630121000000" />
 <maritalStatusCode>
 <originalText>MARRIED (M)</originalText>
