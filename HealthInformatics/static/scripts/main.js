@@ -478,6 +478,7 @@ function updateDemographics(bbDoc) {
     $patient_info.replaceWith($patient_details);
 }
 
+
 function updateAuthor(bbDoc) {
     var $author_info = $('#author_info');
     var $author_details = '<div class="textbox cm_textbox" id="author_info"> ' +
@@ -485,11 +486,11 @@ function updateAuthor(bbDoc) {
                         '<h3> Author Details</h3>' +
                         '</div>' +
                         '<div class="widget_content">' +
-                            '<p><b>' + bbDoc.data.document.author.name.prefix + '.' +
+                            '<p><b> Name: </b></p>' + replace_null(bbDoc.data.document.author.name.prefix) +
                             bbDoc.data.document.author.name.given  + ' ' +
                             bbDoc.data.document.author.name.family +
                             '</p>' +
-                            '<p><b> Address: </p>' +
+                            '<p><b> Address: </b></p>' +
                             '<p>' + bbDoc.data.document.author.address.street + '</p>' +
                             '<p>' + bbDoc.data.document.author.address.city + ", " +
                             bbDoc.data.document.author.address.state + " " +
@@ -500,7 +501,14 @@ function updateAuthor(bbDoc) {
                     '</div>';
     $author_info.replaceWith($author_details);
 }
-
+function replace_null(my_object){
+    if (my_object == null) {
+        return "";
+    }
+    else {
+        return my_object + ". ";
+    }
+}
 function updatePatientDemo(bbDoc) {
     var $custodian_info = $('#custodian_info');
 

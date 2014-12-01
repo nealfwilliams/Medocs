@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4a67e79-e0a8-4d99-a60f-8ba27c0316d6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthInformatics/static/css/Home.css" afterPath="$PROJECT_DIR$/HealthInformatics/static/css/Home.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthInformatics/templates/base.html" afterPath="$PROJECT_DIR$/HealthInformatics/templates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthInformatics/static/ccd/PhillipCCD.xml" afterPath="$PROJECT_DIR$/HealthInformatics/static/ccd/PhillipCCD.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthInformatics/static/scripts/main.js" afterPath="$PROJECT_DIR$/HealthInformatics/static/scripts/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthInformatics/settings.py" afterPath="$PROJECT_DIR$/HealthInformatics/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HealthInformatics.iws" />
@@ -32,7 +32,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/healthapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="435">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
               <caret line="20" column="70" selection-start-line="20" selection-start-column="70" selection-end-line="20" selection-end-column="70" />
               <folding />
             </state>
@@ -52,8 +52,8 @@
       <file leaf-file-name="base.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthInformatics/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-25.0" vertical-offset="2340" max-vertical-offset="4380">
-              <caret line="196" column="0" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
+            <state vertical-scroll-proportion="-25.0" vertical-offset="2415" max-vertical-offset="4380">
+              <caret line="201" column="29" selection-start-line="201" selection-start-column="29" selection-end-line="201" selection-end-column="29" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -76,23 +76,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthInformatics/static/scripts/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2571885" vertical-offset="8914" max-vertical-offset="13695">
-              <caret line="605" column="53" selection-start-line="605" selection-start-column="53" selection-end-line="605" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="7095" max-vertical-offset="12585">
+              <caret line="508" column="30" selection-start-line="508" selection-start-column="30" selection-end-line="508" selection-end-column="30" />
               <folding>
-                <marker date="1417397338923" expanded="true" signature="53:429" placeholder="/*...*/" />
+                <marker date="1417398817547" expanded="true" signature="53:429" placeholder="/*...*/" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HealthInformatics/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="1440">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.18779343" vertical-offset="195" max-vertical-offset="1440">
+              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -111,8 +111,8 @@
       <file leaf-file-name="Home.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthInformatics/static/css/Home.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4380" max-vertical-offset="5370">
-              <caret line="320" column="11" selection-start-line="320" selection-start-column="11" selection-end-line="320" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2955" max-vertical-offset="5370">
+              <caret line="238" column="1" selection-start-line="238" selection-start-column="1" selection-end-line="238" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -135,11 +135,11 @@
         <option value="$PROJECT_DIR$/HealthInformatics/static/scripts/login.js" />
         <option value="$PROJECT_DIR$/healthapp/views.py" />
         <option value="$PROJECT_DIR$/HealthInformatics/templates/signon.html" />
-        <option value="$PROJECT_DIR$/HealthInformatics/settings.py" />
         <option value="$PROJECT_DIR$/HealthInformatics/static/css/signon.css" />
-        <option value="$PROJECT_DIR$/HealthInformatics/static/css/Home.css" />
         <option value="$PROJECT_DIR$/HealthInformatics/templates/base.html" />
+        <option value="$PROJECT_DIR$/HealthInformatics/static/css/Home.css" />
         <option value="$PROJECT_DIR$/HealthInformatics/static/scripts/main.js" />
+        <option value="$PROJECT_DIR$/HealthInformatics/settings.py" />
       </list>
     </option>
   </component>
@@ -466,7 +466,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="5025" max-vertical-offset="5865">
           <caret line="336" column="45" selection-start-line="336" selection-start-column="45" selection-end-line="336" selection-end-column="45" />
           <folding>
-            <marker date="1417397338923" expanded="true" signature="53:429" placeholder="/*...*/" />
+            <marker date="1417398817547" expanded="true" signature="53:429" placeholder="/*...*/" />
           </folding>
         </state>
       </provider>
@@ -515,7 +515,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="5025" max-vertical-offset="5865">
           <caret line="336" column="45" selection-start-line="336" selection-start-column="45" selection-end-line="336" selection-end-column="45" />
           <folding>
-            <marker date="1417397338923" expanded="true" signature="53:429" placeholder="/*...*/" />
+            <marker date="1417398817547" expanded="true" signature="53:429" placeholder="/*...*/" />
           </folding>
         </state>
       </provider>
@@ -564,7 +564,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4536" max-vertical-offset="5355">
           <caret line="317" column="75" selection-start-line="317" selection-start-column="75" selection-end-line="317" selection-end-column="75" />
           <folding>
-            <marker date="1417397338923" expanded="true" signature="53:429" placeholder="/*...*/" />
+            <marker date="1417398817547" expanded="true" signature="53:429" placeholder="/*...*/" />
           </folding>
         </state>
       </provider>
@@ -613,7 +613,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4425" max-vertical-offset="5190">
           <caret line="317" column="0" selection-start-line="317" selection-start-column="0" selection-end-line="317" selection-end-column="0" />
           <folding>
-            <marker date="1417397338923" expanded="true" signature="53:429" placeholder="/*...*/" />
+            <marker date="1417398817547" expanded="true" signature="53:429" placeholder="/*...*/" />
           </folding>
         </state>
       </provider>
@@ -662,7 +662,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="2280">
           <caret line="30" column="3" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
           <folding>
-            <marker date="1417397338923" expanded="true" signature="53:429" placeholder="/*...*/" />
+            <marker date="1417398817547" expanded="true" signature="53:429" placeholder="/*...*/" />
           </folding>
         </state>
       </provider>
@@ -710,7 +710,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="2280">
           <caret line="30" column="3" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
           <folding>
-            <marker date="1417397338923" expanded="true" signature="53:429" placeholder="/*...*/" />
+            <marker date="1417398817547" expanded="true" signature="53:429" placeholder="/*...*/" />
           </folding>
         </state>
       </provider>
@@ -758,7 +758,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="2280">
           <caret line="30" column="3" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
           <folding>
-            <marker date="1417397338923" expanded="true" signature="53:429" placeholder="/*...*/" />
+            <marker date="1417398817547" expanded="true" signature="53:429" placeholder="/*...*/" />
           </folding>
         </state>
       </provider>
@@ -806,7 +806,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="2280">
           <caret line="30" column="3" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
           <folding>
-            <marker date="1417397338923" expanded="true" signature="53:429" placeholder="/*...*/" />
+            <marker date="1417398817547" expanded="true" signature="53:429" placeholder="/*...*/" />
           </folding>
         </state>
       </provider>
@@ -833,22 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/healthapp/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
-          <caret line="20" column="70" selection-start-line="20" selection-start-column="70" selection-end-line="20" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthInformatics/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="1440">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthInformatics/static/scripts/login.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
@@ -872,26 +856,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthInformatics/templates/signon.html">
+    <entry file="file://$PROJECT_DIR$/HealthInformatics/static/css/Home.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.25" vertical-offset="30" max-vertical-offset="690">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2955" max-vertical-offset="5370">
+          <caret line="238" column="1" selection-start-line="238" selection-start-column="1" selection-end-line="238" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthInformatics/static/css/Home.css">
+    <entry file="file://$PROJECT_DIR$/HealthInformatics/static/scripts/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4380" max-vertical-offset="5370">
-          <caret line="320" column="11" selection-start-line="320" selection-start-column="11" selection-end-line="320" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="7095" max-vertical-offset="12585">
+          <caret line="508" column="30" selection-start-line="508" selection-start-column="30" selection-end-line="508" selection-end-column="30" />
+          <folding>
+            <marker date="1417398817547" expanded="true" signature="53:429" placeholder="/*...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/healthapp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
+          <caret line="20" column="70" selection-start-line="20" selection-start-column="70" selection-end-line="20" selection-end-column="70" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthInformatics/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.0" vertical-offset="2340" max-vertical-offset="4380">
-          <caret line="196" column="0" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
+        <state vertical-scroll-proportion="-25.0" vertical-offset="2415" max-vertical-offset="4380">
+          <caret line="201" column="29" selection-start-line="201" selection-start-column="29" selection-end-line="201" selection-end-column="29" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -903,13 +897,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthInformatics/static/scripts/main.js">
+    <entry file="file://$PROJECT_DIR$/HealthInformatics/templates/signon.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2571885" vertical-offset="8914" max-vertical-offset="13695">
-          <caret line="605" column="53" selection-start-line="605" selection-start-column="53" selection-end-line="605" selection-end-column="53" />
-          <folding>
-            <marker date="1417397338923" expanded="true" signature="53:429" placeholder="/*...*/" />
-          </folding>
+        <state vertical-scroll-proportion="-1.25" vertical-offset="30" max-vertical-offset="690">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthInformatics/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18779343" vertical-offset="195" max-vertical-offset="1440">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
