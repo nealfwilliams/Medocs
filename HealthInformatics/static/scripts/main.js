@@ -545,11 +545,11 @@ function updateDemographics(bbDoc) {
                         '<h3> Patient Details</h3>' +
                         '</div>' +
                         '<div class="widget_content">' +
-                            '<p> Last Name: ' + bbDoc.data.demographics.name.family + '</p>' +
-                            '<p> First Name: ' + bbDoc.data.demographics.name.given + '</p>' +
-                            '<p> Gender: ' + bbDoc.data.demographics.gender + '</p>' +
-                            '<p> Date of Birth: </p>' + $birthdate + '</p>' +
-                            '<p> Address: </p>' +
+                            '<p><b> Last Name:</b> ' + bbDoc.data.demographics.name.family + '</p>' +
+                            '<p><b> First Name:</b> ' + bbDoc.data.demographics.name.given + '</p>' +
+                            '<p><b> Gender:</b> ' + bbDoc.data.demographics.gender + '</p>' +
+                            '<p><b> Date of Birth:</b> </p>' + $birthdate + '</p>' +
+                            '<p><b> Address:</b> </p>' +
                             '<p>' + bbDoc.data.demographics.address.street + '</p>' +
                             '<p>' + bbDoc.data.demographics.address.city + ", " +
                             bbDoc.data.demographics.address.state + " " +
@@ -567,11 +567,11 @@ function updateAuthor(bbDoc) {
                         '<h3> Author Details</h3>' +
                         '</div>' +
                         '<div class="widget_content">' +
-                            '<p>' + bbDoc.data.document.author.name.prefix + '.' +
+                            '<p><b>' + bbDoc.data.document.author.name.prefix + '.' +
                             bbDoc.data.document.author.name.given  + ' ' +
                             bbDoc.data.document.author.name.family +
                             '</p>' +
-                            '<p> Address: </p>' +
+                            '<p><b> Address: </p>' +
                             '<p>' + bbDoc.data.document.author.address.street + '</p>' +
                             '<p>' + bbDoc.data.document.author.address.city + ", " +
                             bbDoc.data.document.author.address.state + " " +
@@ -598,16 +598,17 @@ function updatePatientDemo(bbDoc) {
                         '<h3>Patient Overview</h3>' +
                         '</div>' +
                         '<div class="widget_content">' +
-                            '<p>Age: ' + age + '</p>' +
-                            '<p>Sex: ' + bbDoc.data.demographics.gender + '</p>' +
-                            '<p>Primary Language: ' + $.trim(bbDoc.data.demographics.language) + '</p>' +
-                            '<p>Race: ' + $.trim(bbDoc.data.demographics.race) + '</p>' +
-                            '<p><b>Contact Info:' + '</p>' +
-                            '<p>Home Phone: ' + $.trim(bbDoc.data.demographics.phone.home) + '</p>' +
-                            '<p>Work Phone: ' + $.trim(bbDoc.data.demographics.phone.work) + '</p>' +
-                            '<p>Mobile Phone: ' + $.trim(bbDoc.data.demographics.phone.mobile) + '</p>' +
-                            '</p>Email: ' + $.trim(bbDoc.data.demographics.email) + '</p>' +
-                        '</div>' +
+                            '<p><b>Age:</b> ' + age + '</p>' +
+                            '<p><b>Sex:</b> ' + bbDoc.data.demographics.gender + '</p>' +
+                            '<p><b>Primary Language:</b> ' + $.trim(bbDoc.data.demographics.language) + '</p>' +
+                            '<p><b>Race:</b> ' + $.trim(bbDoc.data.demographics.race) + '</p>' +
+                            '<div style="margin-top:10px;">' +
+                            '<p><b style="font-size:19px;">Contact Info</b>' + '</p>' +
+                            '<p><b>Home Phone:</b> ' + $.trim(bbDoc.data.demographics.phone.home) + '</p>' +
+                            '<p><b>Work Phone:</b> ' + $.trim(bbDoc.data.demographics.phone.work) + '</p>' +
+                            '<p><b>Mobile Phone:</b> ' + $.trim(bbDoc.data.demographics.phone.mobile) + '</p>' +
+                            '<p><b>Email:</b> ' + $.trim(bbDoc.data.demographics.email) + '</p></div>' +
+                            '</div>' +
                     '</div>';
     $custodian_info.replaceWith($custodian_details);
 }
