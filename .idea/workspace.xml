@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4a67e79-e0a8-4d99-a60f-8ba27c0316d6" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HealthInformatics/static/images/MedocsUserManual.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthInformatics/templates/base.html" afterPath="$PROJECT_DIR$/HealthInformatics/templates/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthInformatics/settings.py" afterPath="$PROJECT_DIR$/HealthInformatics/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthInformatics/templates/signon.html" afterPath="$PROJECT_DIR$/HealthInformatics/templates/signon.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -61,8 +63,8 @@
       <file leaf-file-name="signon.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HealthInformatics/templates/signon.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2682927" vertical-offset="15" max-vertical-offset="750">
-              <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.09756097" vertical-offset="15" max-vertical-offset="750">
+              <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -83,8 +85,8 @@
       <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthInformatics/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="1440">
-              <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="1500">
+              <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -130,8 +132,8 @@
         <option value="$PROJECT_DIR$/HealthInformatics/templates/base.html" />
         <option value="$PROJECT_DIR$/HealthInformatics/static/css/Home.css" />
         <option value="$PROJECT_DIR$/HealthInformatics/static/scripts/main.js" />
-        <option value="$PROJECT_DIR$/HealthInformatics/templates/signon.html" />
         <option value="$PROJECT_DIR$/HealthInformatics/settings.py" />
+        <option value="$PROJECT_DIR$/HealthInformatics/templates/signon.html" />
       </list>
     </option>
   </component>
@@ -828,16 +830,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthInformatics/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="1440">
-          <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="1500">
+          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthInformatics/templates/signon.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2682927" vertical-offset="15" max-vertical-offset="750">
-          <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.09756097" vertical-offset="15" max-vertical-offset="750">
+          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
           <folding />
         </state>
       </provider>
