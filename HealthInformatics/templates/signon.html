@@ -26,10 +26,14 @@
         <div class="widget_content">
             <form method="post" action="/sign_on/">
             {% csrf_token %}
+                <div>
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username">
+                </div>
+                <div>
                 <label for="password">Password</label>
                 <input type="text" id="password" name="password">
+                </div>
                 <button class="btn btn-primary"> Sign On </button>
             </form>
         </div>
